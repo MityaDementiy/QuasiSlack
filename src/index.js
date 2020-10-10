@@ -1,9 +1,10 @@
-// @ts-check
+// @ts-nocheck
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import '../assets/application.scss';
+import run from './initial';
 
 // import faker from 'faker';
 import gon from 'gon';
@@ -16,3 +17,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 console.log('it works!');
 console.log('gon', gon);
+
+const { channels } = gon;
+run(channels);

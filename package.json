@@ -7,7 +7,8 @@
     "slack": "dist/bin/slack.js"
   },
   "engines": {
-    "node": ">= 13"
+    "node": "14.13.1",
+    "npm": "6.14.18"
   },
   "scripts": {
     "test": "jest",
@@ -21,9 +22,9 @@
     "type": "git",
     "url": "git@github.com:hexlet-components/projects-frontend-l4-server.git"
   },
-  "author": "Kirill Mokevnin",
+  "author": "Kirill Mokevnin, Dmitriy Dementiy",
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://mityadem.herokuapp.com/",
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
