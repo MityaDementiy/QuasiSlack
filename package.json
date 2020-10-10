@@ -24,7 +24,7 @@
   },
   "author": "Kirill Mokevnin, Dmitriy Dementiy",
   "license": "ISC",
-  "homepage": "https://mityadem.herokuapp.com/",
+  "homepage": "https://serene-cove-29473.herokuapp.com/",
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
