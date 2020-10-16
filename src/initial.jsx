@@ -3,7 +3,10 @@ import ReactDom from 'react-dom';
 import App from './components/App';
 import { setUserName, getUserName } from './utils';
 
-setUserName();
+if (!getUserName()) {
+  setUserName();
+}
+
 const userName = getUserName();
 console.log(userName);
 
@@ -14,5 +17,7 @@ export default (channels) => {
   ReactDom.render(
     <UserContext.Provider value={userName}>
       <App channels={channels} />
-    </UserContext.Provider>, container);
+    </UserContext.Provider>,
+    container,
+  );
 };

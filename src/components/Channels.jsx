@@ -5,9 +5,9 @@ const Channels = ({ channels }) => {
 
   return (
     <ul className='list-group list-group-flush'>
-      { renderChannels }
+      { renderChannels}
     </ul>
-  ); 
+  );
 };
 
 export default Channels;

@@ -6,9 +6,9 @@ const MessageForm = () => {
   const formik = useFormik({
     initialValues: {
       message: '',
-    }, 
+    },
     validate,
-    onSubmit: values => {
+    onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2));
     },
   });
@@ -17,14 +17,14 @@ const MessageForm = () => {
     <form onSubmit={formik.handleSubmit}>
       <div className='form-group form-row'>
         <div className='col-10'>
-        <input 
-          type='text'
-          id='message'
-          className='form-control'
-          placeholder='Type message'
-          {...formik.getFieldProps('message')}
-        />
-        {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
+          <input
+            type='text'
+            id='message'
+            className='form-control'
+            placeholder='Type message'
+            {...formik.getFieldProps('message')}
+          />
+          {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <div className='col-2'>
           <button type='submit' className='btn btn-primary btn-block'>Submit</button>
