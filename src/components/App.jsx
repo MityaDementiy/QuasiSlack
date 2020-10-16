@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import MessageForm from './chatForm';
+import ChatRoom from './ChatRoom';
+import MessageForm from './MessageForm';
 
 const App = ({ channels }) => {
   const renderChannels = (channels) => {
@@ -9,15 +10,15 @@ const App = ({ channels }) => {
     
   return (
     <Container fluid>
-      <Row>
-        <Col sm={3}>
+      <Row className='vh-100'>
+        <Col sm={2}>
           <h3>Channels</h3>
           <ul>
             {renderChannels(channels)}
           </ul>
         </Col>
-        <Col sm={9}>
-          <h3>Chat</h3>
+        <Col sm={10}>
+          <ChatRoom />
           <MessageForm />
         </Col>
       </Row>
