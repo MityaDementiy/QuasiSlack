@@ -1,11 +1,21 @@
 import React from "react";
 import { useFormik } from "formik";
 
+const validate = (values) => {
+  const errors = {};
+  if (!values.message) {
+    errors.message = 'Message is required';
+  } 
+
+  return errors;
+};
+
 const MessageForm = () => {
   const formik = useFormik({
     initialValues: {
       message: '',
     }, 
+    validate,
     onSubmit: values => {
       console.log(JSON.stringify(values, null, 2));
     },
@@ -22,6 +32,8 @@ const MessageForm = () => {
           placeholder='Type message'
           {...formik.getFieldProps('message')}
         />
+        {formik.errors.message ? (
+         <div>{formik.errors.message}</div>) : null}
         </div>
         <div className='col-2'>
           <button type='submit' className='btn btn-primary'>Submit</button>
