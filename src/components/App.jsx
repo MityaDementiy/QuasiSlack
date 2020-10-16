@@ -10,13 +10,13 @@ const App = ({ channels }) => {
   return (
     <Container fluid>
       <Row>
-        <Col sm={4}>
+        <Col sm={3}>
           <h3>Channels</h3>
           <ul>
             {renderChannels(channels)}
           </ul>
         </Col>
-        <Col sm={8}>
+        <Col sm={9}>
           <h3>Chat</h3>
           <MessageForm />
         </Col>
