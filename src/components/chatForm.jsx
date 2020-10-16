@@ -14,7 +14,7 @@ const MessageForm = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className='form-group form-row'>
-        <div className='col'>
+        <div className='col-10'>
         <input 
           type='text'
           id='message'
@@ -23,7 +23,7 @@ const MessageForm = () => {
           {...formik.getFieldProps('message')}
         />
         </div>
-        <div className='col'>
+        <div className='col-2'>
           <button type='submit' className='btn btn-primary'>Submit</button>
         </div>
       </div>
