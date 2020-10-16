@@ -1,14 +1,6 @@
-import React from "react";
-import { useFormik } from "formik";
-
-const validate = (values) => {
-  const errors = {};
-  if (!values.message) {
-    errors.message = 'Message is required';
-  } 
-
-  return errors;
-};
+import React from 'react';
+import { useFormik } from 'formik';
+import { validate } from '../utils';
 
 const MessageForm = () => {
   const formik = useFormik({
