@@ -35,7 +35,7 @@ const MessageForm = () => {
         {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <div className='col-2'>
-          <button type='submit' className='btn btn-primary'>Submit</button>
+          <button type='submit' className='btn btn-primary btn-block'>Submit</button>
         </div>
       </div>
     </form>
