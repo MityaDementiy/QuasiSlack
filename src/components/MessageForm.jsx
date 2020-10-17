@@ -10,6 +10,7 @@ const MessageForm = () => {
     validate,
     onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2));
+      formik.resetForm();
     },
   });
 
