@@ -1,14 +1,16 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { validate } from '../utils';
+import { validate, UserContext } from '../utils';
 
 const MessageForm = () => {
+  const userName = React.useContext(UserContext);
   const formik = useFormik({
     initialValues: {
       message: '',
     },
     validate,
     onSubmit: (values) => {
+      console.log(userName);
       console.log(JSON.stringify(values, null, 2));
       formik.resetForm();
     },

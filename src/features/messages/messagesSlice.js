@@ -5,7 +5,12 @@
 //   initialState: {
 //     messages: [],
 //   },
-//   reducers:
+//   reducers: {
+//     addMessage: (state) => {
+//       const { messages } = state;
+//       return messages;
+//     },
+//   },
 // });
 
-// export default messagesSlice;
+// export default messagesSlice.reducer;

@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import App from './components/App';
-import { setUserName, getUserName } from './utils';
+import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
 
 if (!getUserName()) {
@@ -12,8 +12,6 @@ if (!getUserName()) {
 
 const userName = getUserName();
 console.log(userName);
-
-const UserContext = React.createContext();
 
 const store = configureStore({
   reducer: rootReducer,
