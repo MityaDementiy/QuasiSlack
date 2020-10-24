@@ -17,7 +17,7 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
-export default (channels, currentChannelId) => {
+export default ({ channels, currentChannelId }) => {
   const container = document.querySelector('.container');
   ReactDom.render(
     <Provider store={store}>

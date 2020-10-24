@@ -18,5 +18,5 @@ if (process.env.NODE_ENV !== 'production') {
 console.log('it works!');
 console.log('gon', gon);
 
-const { channels, currentChannelId } = gon;
-run(channels, currentChannelId);
+// const { channels, currentChannelId } = gon;
+run(gon);

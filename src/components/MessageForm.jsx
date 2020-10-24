@@ -12,7 +12,6 @@ const MessageForm = ({ currentChannelId }) => {
       message: '',
     },
     validate,
-    // надо реализовать асинхронную отправку сообщений
     onSubmit: async (values) => {
       const messageText = values.message;
       const message = {
