@@ -4,7 +4,7 @@ import Channels from './Channels';
 import ChatRoom from './ChatRoom';
 import MessageForm from './MessageForm';
 
-const App = ({ channels }) => (
+const App = ({ channels, currentChannelId }) => (
   <Container fluid>
     <Row className='vh-100'>
       <Col sm={2}>
@@ -13,7 +13,7 @@ const App = ({ channels }) => (
       </Col>
       <Col sm={10}>
         <ChatRoom />
-        <MessageForm />
+        <MessageForm currentChannelId={currentChannelId} />
       </Col>
     </Row>
   </Container>

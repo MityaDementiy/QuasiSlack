@@ -1,17 +1,25 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { validate, UserContext } from '../utils';
 
-const MessageForm = () => {
+const MessageForm = ({ currentChannelId }) => {
   const userName = React.useContext(UserContext);
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       message: '',
     },
     validate,
-    onSubmit: (values) => {
-      console.log(userName);
-      console.log(JSON.stringify(values, null, 2));
+    // надо реализовать асинхронную отправку сообщений
+    onSubmit: async (values) => {
+      const messageText = values.message;
+      const message = {
+        user: userName,
+        text: messageText,
+      };
+      console.log(message);
       formik.resetForm();
     },
   });

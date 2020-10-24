@@ -17,12 +17,12 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
-export default (channels) => {
+export default (channels, currentChannelId) => {
   const container = document.querySelector('.container');
   ReactDom.render(
     <Provider store={store}>
       <UserContext.Provider value={userName}>
-        <App channels={channels} />
+        <App channels={channels} currentChannelId={currentChannelId} />
       </UserContext.Provider>
     </Provider>,
     container,
