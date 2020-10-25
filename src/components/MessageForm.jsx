@@ -1,14 +1,11 @@
 import React from 'react';
 import { useFormik } from 'formik';
-// import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { validate, UserContext } from '../utils';
-// import { addMessage } from '../features/messages/messagesSlice';
 import routes from '../routes';
 
 const MessageForm = ({ currentChannelId }) => {
   const userName = React.useContext(UserContext);
-  // const dispatch = useDispatch();
   const channelUrl = routes.channelMessagesPath(currentChannelId);
 
   const formik = useFormik({
@@ -16,15 +13,15 @@ const MessageForm = ({ currentChannelId }) => {
       message: '',
     },
     validate,
-    onSubmit: async (values) => {
+    onSubmit: async (values, { setSubmitting }) => {
       const messageText = values.message;
       const attributes = {
         user: userName,
         text: messageText,
       };
       await axios.post(channelUrl, { data: { attributes } });
-      // dispatch(addMessage(attributes));
       formik.resetForm();
+      setSubmitting(false);
     },
   });
 
@@ -42,7 +39,7 @@ const MessageForm = ({ currentChannelId }) => {
           {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <div className='col-2'>
-          <button type='submit' className='btn btn-primary btn-block'>Submit</button>
+          <button type='submit' className='btn btn-primary btn-block' disabled={formik.isSubmitting}>Submit</button>
         </div>
       </div>
     </form>
