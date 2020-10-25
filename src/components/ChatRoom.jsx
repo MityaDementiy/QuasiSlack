@@ -7,7 +7,7 @@ const ChatRoom = ({ messages }) => {
       </div>
   ));
   const vdom = (
-    <div className='card mb-4 h-75'>
+    <div className='card mb-4 h-75 overflow-auto'>
       <div className='card-body h-75'>
         {renderMessages}
       </div>
