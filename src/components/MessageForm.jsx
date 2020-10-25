@@ -1,14 +1,14 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { validate, UserContext } from '../utils';
-import { addMessage } from '../features/messages/messagesSlice';
+// import { addMessage } from '../features/messages/messagesSlice';
 import routes from '../routes';
 
 const MessageForm = ({ currentChannelId }) => {
   const userName = React.useContext(UserContext);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const channelUrl = routes.channelMessagesPath(currentChannelId);
 
   const formik = useFormik({
@@ -23,7 +23,7 @@ const MessageForm = ({ currentChannelId }) => {
         text: messageText,
       };
       await axios.post(channelUrl, { data: { attributes } });
-      dispatch(addMessage(attributes));
+      // dispatch(addMessage(attributes));
       formik.resetForm();
     },
   });

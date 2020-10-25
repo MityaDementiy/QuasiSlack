@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const ChatRoom = ({ messages }) => {
+const ChatRoom = () => {
+  const messages = useSelector((state) => state.messages.messages);
   const renderMessages = messages.map((message) => (
       <div key={message.id}>
         <span><b>{message.user}:</b></span><span> {message.text}</span>

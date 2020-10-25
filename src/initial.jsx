@@ -20,9 +20,8 @@ export default ({ channels, currentChannelId, messages }) => {
   });
 
   const socket = io();
-  socket.on('newMessage', (reply) => {
-    const message = reply.data.attributes;
-    store.dispatch(addMessage({ data: message }));
+  socket.on('newMessage', ({ data: { attributes } }) => {
+    store.dispatch(addMessage(attributes));
   });
 
   const container = document.querySelector('.container');
