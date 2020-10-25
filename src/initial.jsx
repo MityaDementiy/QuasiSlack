@@ -8,24 +8,23 @@ import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
 import { addMessage } from './features/messages/messagesSlice';
 
-if (!getUserName()) {
-  setUserName();
-}
-
-const userName = getUserName();
-console.log(userName);
-
-const store = configureStore({
-  reducer: rootReducer,
-});
-
-const socket = io();
-socket.on('newMessage', (reply) => {
-  const message = reply.data.attributes;
-  store.dispatch(addMessage(message));
-});
-
 export default ({ channels, currentChannelId, messages }) => {
+  if (!getUserName()) {
+    setUserName();
+  }
+
+  const userName = getUserName();
+
+  const store = configureStore({
+    reducer: rootReducer,
+  });
+
+  const socket = io();
+  socket.on('newMessage', (reply) => {
+    const message = reply.data.attributes;
+    store.dispatch(addMessage({ data: message }));
+  });
+
   const container = document.querySelector('.container');
   ReactDom.render(
     <Provider store={store}>
