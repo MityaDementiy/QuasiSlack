@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import io from 'socket.io-client';
 import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
+import { addMessage } from './features/messages/messagesSlice';
 
 if (!getUserName()) {
   setUserName();
@@ -17,12 +19,18 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
-export default ({ channels, currentChannelId }) => {
+const socket = io();
+socket.on('newMessage', (reply) => {
+  const message = reply.data.attributes;
+  store.dispatch(addMessage(message));
+});
+
+export default ({ channels, currentChannelId, messages }) => {
   const container = document.querySelector('.container');
   ReactDom.render(
     <Provider store={store}>
       <UserContext.Provider value={userName}>
-        <App channels={channels} currentChannelId={currentChannelId} />
+        <App channels={channels} currentChannelId={currentChannelId} messages={messages} />
       </UserContext.Provider>
     </Provider>,
     container,
