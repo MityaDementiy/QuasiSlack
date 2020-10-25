@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
-import { addMessage } from './features/messages/messagesSlice';
+import { addMessage, initMessages } from './features/messages/messagesSlice';
 
 export default ({ channels, currentChannelId, messages }) => {
   if (!getUserName()) {
@@ -18,6 +18,8 @@ export default ({ channels, currentChannelId, messages }) => {
   const store = configureStore({
     reducer: rootReducer,
   });
+
+  store.dispatch(initMessages(messages));
 
   const socket = io();
   socket.on('newMessage', ({ data: { attributes } }) => {
