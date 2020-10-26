@@ -9,8 +9,8 @@ const ChatRoom = () => {
       </div>
   ));
   const vdom = (
-    <div className='card mb-4 h-25 overflow-auto'>
-      <div className='card-body h-25 overflow-auto'>
+    <div className='card mb-4 h-50 overflow-auto'>
+      <div className='card-body h-50 overflow-auto'>
         {renderMessages}
       </div>
     </div>
