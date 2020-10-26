@@ -13,7 +13,7 @@ const MessageForm = ({ currentChannelId }) => {
       message: '',
     },
     validate,
-    onSubmit: async (values, { setSubmitting, setFieldError }) => {
+    onSubmit: async (values, { setFieldError }) => {
       const messageText = values.message;
       const attributes = {
         user: userName,
@@ -22,7 +22,6 @@ const MessageForm = ({ currentChannelId }) => {
       try {
         await axios.post(channelUrl, { data: { attributes } });
         formik.resetForm();
-        setSubmitting(false);
       } catch (err) {
         setFieldError('message', err.message);
       }
