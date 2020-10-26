@@ -13,15 +13,19 @@ const MessageForm = ({ currentChannelId }) => {
       message: '',
     },
     validate,
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, setFieldError }) => {
       const messageText = values.message;
       const attributes = {
         user: userName,
         text: messageText,
       };
-      await axios.post(channelUrl, { data: { attributes } });
-      formik.resetForm();
-      setSubmitting(false);
+      try {
+        await axios.post(channelUrl, { data: { attributes } });
+        formik.resetForm();
+        setSubmitting(false);
+      } catch (err) {
+        setFieldError('message', err.message);
+      }
     },
   });
 
