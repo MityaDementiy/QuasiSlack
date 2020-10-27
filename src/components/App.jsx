@@ -9,7 +9,7 @@ const App = ({ channels, currentChannelId, messages }) => (
     <Row className='vh-100'>
       <Col sm={2}>
         <h5>Channels</h5>
-        <Channels channels={channels} />
+        <Channels channels={channels} currentChannelId={currentChannelId} />
       </Col>
       <Col sm={10}>
         <ChatRoom messages={messages} />
