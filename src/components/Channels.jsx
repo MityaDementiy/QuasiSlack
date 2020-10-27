@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Channels = ({ channels }) => {
-  const renderChannels = channels.map((channel) => <li key={channel.name} className='list-group-item'><a href='#'>{channel.name}</a></li>);
+  const renderChannels = channels.map((channel) => <button key={channel.name} className='btn btn-secondary mb-3'>{channel.name}</button>);
 
   return (
-    <ul className='list-group list-group-flush'>
+    <div className='btn-group-vertical'>
       { renderChannels}
-    </ul>
+    </div>
   );
 };
 
