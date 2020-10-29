@@ -3,7 +3,11 @@ import { useSelector } from 'react-redux';
 
 const ChatRoom = () => {
   const messages = useSelector((state) => state.messages.messages);
-  const renderMessages = messages.map((message) => (
+  const currentChannelId = useSelector((state) => state.channels.currentChannelId);
+  const currentChannelMessages = messages
+    .filter((message) => message.channelId === currentChannelId);
+
+  const renderMessages = currentChannelMessages.map((message) => (
       <div key={message.id}>
         <span><b>{message.user}:</b></span><span> {message.text}</span>
       </div>

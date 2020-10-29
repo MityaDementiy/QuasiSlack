@@ -21,11 +21,18 @@ const Channels = () => {
   };
 
   const renderChannels = channels
-    .map((c) => <button key={c.name} id={c.id} className={getClasses(c.id)} onClick={handleSelectChannel}>{c.name}</button>);
+    .map((c) => <button
+      key={c.name}
+      id={c.id}
+      className={getClasses(c.id)}
+      onClick={handleSelectChannel}
+    >
+      {c.name}
+    </button>);
 
   return (
     <div className='btn-group-vertical'>
-      { renderChannels }
+      { renderChannels}
     </div>
   );
 };

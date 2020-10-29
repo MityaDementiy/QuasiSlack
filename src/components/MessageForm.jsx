@@ -1,11 +1,13 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { validate, UserContext } from '../utils';
 import routes from '../routes';
 
-const MessageForm = ({ currentChannelId }) => {
+const MessageForm = () => {
   const userName = React.useContext(UserContext);
+  const currentChannelId = useSelector((state) => state.channels.currentChannelId);
   const channelUrl = routes.channelMessagesPath(currentChannelId);
 
   const formik = useFormik({
