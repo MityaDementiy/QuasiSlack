@@ -32,7 +32,7 @@ const Channels = () => {
 
   return (
     <div className='btn-group-vertical'>
-      { renderChannels}
+      { renderChannels }
     </div>
   );
 };
