@@ -10,7 +10,7 @@ const Channels = () => {
 
   const getClasses = (id) => {
     const buttonType = currentChannelId === id ? 'primary' : 'secondary';
-    const classNames = cn('btn', 'mb-3', `btn-${buttonType}`);
+    const classNames = cn('btn', 'mb-3', `btn-${buttonType}`, 'btn-lg');
     return classNames;
   };
 
