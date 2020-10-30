@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import AddChannelButton from './AddChannelButton';
 import Channels from './Channels';
 import ChatRoom from './ChatRoom';
 import MessageForm from './MessageForm';
@@ -10,6 +11,7 @@ const App = () => (
       <Col sm={2}>
         <h5>Channels</h5>
         <Channels />
+        <AddChannelButton />
       </Col>
       <Col sm={10}>
         <ChatRoom />
