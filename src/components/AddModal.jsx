@@ -30,7 +30,6 @@ const AddModal = () => {
       } catch (err) {
         setFieldError('message', err.message);
       }
-      formik.resetForm();
     },
   });
   const vdom = (
@@ -52,7 +51,7 @@ const AddModal = () => {
           </div>
           <Button variant='primary' type='submit' disabled={formik.isSubmitting}>
             Submit
-              </Button>
+          </Button>
         </form>
       </Modal.Body>
     </Modal>
