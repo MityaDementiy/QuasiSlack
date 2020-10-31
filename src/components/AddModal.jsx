@@ -21,28 +21,27 @@ const AddModal = () => {
     },
   });
   const vdom = (
-
     <Modal show onHide={hideModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add channel</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      <Modal.Header closeButton>
+        <Modal.Title>Add channel</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
-              <div className='form-group form-row'>
-                <input
-                  type='text'
-                  id='message'
-                  className='form-control'
-                  placeholder='Type channel name'
-                  {...formik.getFieldProps('message')}
-                />
-              </div>
-              <Button variant='primary' type='submit' disabled={formik.isSubmitting}>
-                Submit
+          <div className='form-group form-row'>
+            <input
+              type='text'
+              id='message'
+              className='form-control'
+              placeholder='Type channel name'
+              {...formik.getFieldProps('message')}
+            />
+          </div>
+          <Button variant='primary' type='submit' disabled={formik.isSubmitting}>
+            Submit
               </Button>
         </form>
-        </Modal.Body>
-      </Modal>
+      </Modal.Body>
+    </Modal>
   );
   return vdom;
 };
