@@ -5,7 +5,7 @@ import React from 'react';
 export const validate = (values) => {
   const errors = {};
   if (!values.message) {
-    errors.message = 'Message is required';
+    errors.message = 'You can not submit empty field';
   }
 
   return errors;
