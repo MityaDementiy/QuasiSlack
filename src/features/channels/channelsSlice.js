@@ -13,9 +13,18 @@ const channelsSlice = createSlice({
       const key = 'currentChannelId';
       return update(state, { [key]: { $set: id } });
     },
+    addChannel(state, action) {
+      const channel = action.payload;
+      state.channels.push(channel);
+    },
+    initChannels(state, action) {
+      const channels = action.payload;
+      const key = 'channels';
+      return update(state, { [key]: { $set: channels } });
+    },
   },
 });
 
-export const { selectChannel } = channelsSlice.actions;
+export const { selectChannel, addChannel, initChannels } = channelsSlice.actions;
 
 export default channelsSlice.reducer;
