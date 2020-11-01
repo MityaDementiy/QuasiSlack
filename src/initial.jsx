@@ -7,7 +7,7 @@ import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
 import { addMessage, initMessages } from './features/messages/messagesSlice';
-import { addChannel, initChannels, removeChannel } from './features/channels/channelsSlice';
+import { addChannel, initChannels, removeChannel, renameChannel } from './features/channels/channelsSlice';
 
 export default ({ channels, currentChannelId, messages }) => {
   if (!getUserName()) {
@@ -32,6 +32,9 @@ export default ({ channels, currentChannelId, messages }) => {
   });
   socket.on('removeChannel', ({ data }) => {
     store.dispatch(removeChannel(data.id));
+  });
+  socket.on('renameChannel', ({ data: { attributes } }) => {
+    store.dispatch(renameChannel(attributes));
   });
 
   const container = document.querySelector('.container');

@@ -30,6 +30,13 @@ const Channels = () => {
     dispatch(openModal('removing'));
   };
 
+  const handleShowRenameModal = (e) => {
+    e.preventDefault();
+    const renameChannelId = e.target.id;
+    dispatch(selectChannel(renameChannelId));
+    dispatch(openModal('renaming'));
+  };
+
   const renderChannels = channels
     .map((c) => {
       const classes = getClasses(c.id);
@@ -59,8 +66,8 @@ const Channels = () => {
     <button id={c.id} type="button" className={classes} onClick={handleShowDeleteModal}>
       <Trash id={c.id}/>
     </button>
-    <button id={c.id} type="button" className={classes} onClick={handleShowDeleteModal}>
-      <Edit />
+    <button id={c.id} type="button" className={classes} onClick={handleShowRenameModal}>
+      <Edit id={c.id}/>
     </button>
     </div>
       );

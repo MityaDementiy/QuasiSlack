@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import AddChannelButton from './AddChannelButton';
 import AddModal from './AddModal';
 import RemoveModal from './RemoveModal';
+import RenameModal from './RenameModal';
 import Channels from './Channels';
 import ChatRoom from './ChatRoom';
 import MessageForm from './MessageForm';
@@ -11,7 +12,7 @@ import MessageForm from './MessageForm';
 const modals = {
   adding: AddModal,
   removing: RemoveModal,
-  // renaming: RenameModal,
+  renaming: RenameModal,
 };
 
 const getModal = (action) => modals[action];
