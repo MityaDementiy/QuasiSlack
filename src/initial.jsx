@@ -7,7 +7,7 @@ import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
 import { addMessage, initMessages } from './features/messages/messagesSlice';
-import { addChannel, initChannels } from './features/channels/channelsSlice';
+import { addChannel, initChannels, removeChannel } from './features/channels/channelsSlice';
 
 export default ({ channels, currentChannelId, messages }) => {
   if (!getUserName()) {
@@ -29,6 +29,9 @@ export default ({ channels, currentChannelId, messages }) => {
   });
   socket.on('newChannel', ({ data: { attributes } }) => {
     store.dispatch(addChannel(attributes));
+  });
+  socket.on('removeChannel', ({ data }) => {
+    store.dispatch(removeChannel(data.id));
   });
 
   const container = document.querySelector('.container');

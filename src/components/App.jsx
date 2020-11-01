@@ -3,14 +3,15 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import AddChannelButton from './AddChannelButton';
 import AddModal from './AddModal';
+import RemoveModal from './RemoveModal';
 import Channels from './Channels';
 import ChatRoom from './ChatRoom';
 import MessageForm from './MessageForm';
 
 const modals = {
   adding: AddModal,
-  // removing: Remove,
-  // renaming: Rename,
+  removing: RemoveModal,
+  // renaming: RenameModal,
 };
 
 const getModal = (action) => modals[action];
@@ -21,12 +22,12 @@ const App = () => {
   const vdom = (
     <Container fluid>
       <Row className='vh-100'>
-        <Col sm={2}>
+        <Col sm={3}>
           <h5>Channels</h5>
           <Channels />
           <AddChannelButton />
         </Col>
-        <Col sm={10}>
+        <Col sm={9}>
           { modal && <ModalComponent />}
           <ChatRoom />
           <MessageForm />

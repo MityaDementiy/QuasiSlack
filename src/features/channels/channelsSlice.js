@@ -22,9 +22,18 @@ const channelsSlice = createSlice({
       const key = 'channels';
       return update(state, { [key]: { $set: channels } });
     },
+    removeChannel(state, action) {
+      const id = action.payload;
+      const newChannels = state.channels.filter((c) => c.id !== id);
+      const key = 'channels';
+      const key1 = 'currentChannelId';
+      return update(state, { [key]: { $set: newChannels }, [key1]: { $set: 1 } });
+    },
   },
 });
 
-export const { selectChannel, addChannel, initChannels } = channelsSlice.actions;
+export const {
+  selectChannel, addChannel, initChannels, removeChannel,
+} = channelsSlice.actions;
 
 export default channelsSlice.reducer;

@@ -18,3 +18,7 @@ export const getUserName = () => Cookies.get('userName');
 export const setUserName = () => Cookies.set('userName', createUserName());
 
 export const UserContext = React.createContext();
+
+export const isRemovable = (channel) => channel.removable;
+
+export const createFakeKey = () => faker.lorem.word();
