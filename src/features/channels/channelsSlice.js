@@ -34,6 +34,7 @@ const channelsSlice = createSlice({
       const filtered = state.channels.filter((c) => c.id === id);
       const targetChannel = filtered[0];
       targetChannel.name = name;
+      state.currentChannelId = id;
     },
   },
 });
