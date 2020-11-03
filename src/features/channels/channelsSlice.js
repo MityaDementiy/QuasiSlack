@@ -15,25 +15,28 @@ const channelsSlice = createSlice({
     },
     addChannel(state, action) {
       const channel = action.payload;
-      state.channels.push(channel);
-    },
-    initChannels(state, action) {
-      const channels = action.payload;
+      const { channels } = state;
+      channels.push(channel);
       const key = 'channels';
       return update(state, { [key]: { $set: channels } });
+    },
+    initChannels(state, action) {
+      const currentChannels = action.payload;
+      const channels = 'channels';
+      return update(state, { [channels]: { $set: currentChannels } });
     },
     removeChannel(state, action) {
       const id = action.payload;
       const newChannels = state.channels.filter((c) => c.id !== id);
-      const key = 'channels';
-      const key1 = 'currentChannelId';
-      return update(state, { [key]: { $set: newChannels }, [key1]: { $set: 1 } });
+      const channels = 'channels';
+      const currentChannelId = 'currentChannelId';
+      return update(state, { [channels]: { $set: newChannels }, [currentChannelId]: { $set: 1 } });
     },
     renameChannel(state, action) {
       const { id, name } = action.payload;
-      const filtered = state.channels.filter((c) => c.id === id);
-      const targetChannel = filtered[0];
+      const targetChannel = state.channels.find((c) => c.id === id);
       targetChannel.name = name;
+      // eslint-disable-next-line no-param-reassign
       state.currentChannelId = id;
     },
   },
