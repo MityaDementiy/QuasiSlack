@@ -19,22 +19,22 @@ const Channels = () => {
 
   const handleSelectChannel = (e) => {
     e.preventDefault();
-    const selectedChannelId = parseInt(e.target.id, 10);
-    dispatch(selectChannel(selectedChannelId));
+    const targetElement = e.target;
+    if (targetElement.innerHTML === 'general' || targetElement.innerHTML === 'random') {
+      dispatch(selectChannel(parseInt(targetElement.id, 10)));
+    } else {
+      const closestButtonGroup = targetElement.closest('.btn-group');
+      dispatch(selectChannel(parseInt(closestButtonGroup.id, 10)));
+    }
   };
 
   const handleShowDeleteModal = (e) => {
     e.preventDefault();
-    const removeChannelId = e.target.id;
-    dispatch(selectChannel(removeChannelId));
     dispatch(openModal('removing'));
   };
 
   const handleShowRenameModal = (e) => {
     e.preventDefault();
-    const renameChannelId = e.target.id;
-    console.log('renameChannelId', renameChannelId);
-    dispatch(selectChannel(renameChannelId));
     dispatch(openModal('renaming'));
   };
 
@@ -44,36 +44,34 @@ const Channels = () => {
       if (!isRemovable(c)) {
         return (
           <button
-          key={c.name}
-          id={c.id}
-          className={classes}
-          onClick={handleSelectChannel}
+            key={c.name}
+            id={c.id}
+            className={classes}
+            onClick={handleSelectChannel}
           >
-          {c.name}
+            {c.name}
           </button>
         );
       }
       return (
-      <div className='btn-group' key={c.name}>
-      <button
-      id={c.id}
-      className={classes}
-      onClick={handleSelectChannel}
-    >
-      {c.name}
-    </button>
-    <button id={c.id} type="button" className={classes} onClick={handleShowDeleteModal}>
-      {/* <Trash id={c.id}/> */} D
-    </button>
-    <button id={c.id} type="button" className={classes} onClick={handleShowRenameModal}>
-      {/* <Edit id={c.id}/> */} R
-    </button>
-    </div>
+        <div className='btn-group' key={c.name} onClick={handleSelectChannel} id={c.id}>
+          <button
+            className={classes}
+          >
+            {c.name}
+          </button>
+          <button type="button" className={classes} onClick={handleShowDeleteModal}>
+            <Trash />
+          </button>
+          <button type="button" className={classes} onClick={handleShowRenameModal}>
+            <Edit />
+          </button>
+        </div>
       );
     });
 
   return (
-    <div className='btn-group-vertical'>
+    <div className='btn-group-vertical d-block'>
       { renderChannels }
     </div>
   );
