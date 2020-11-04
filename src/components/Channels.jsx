@@ -26,7 +26,6 @@ const Channels = () => {
   const handleShowDeleteModal = (e) => {
     e.preventDefault();
     const removeChannelId = e.target.id;
-    console.log('removeChannelId', removeChannelId);
     dispatch(selectChannel(removeChannelId));
     dispatch(openModal('removing'));
   };
