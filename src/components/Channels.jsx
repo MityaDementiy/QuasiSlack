@@ -56,14 +56,14 @@ const Channels = () => {
       return (
         <div className='btn-group' key={c.name} onClick={handleSelectChannel} id={c.id}>
           <button
-            className={classes}
+            className={`${classes}, w-50`}
           >
             {c.name}
           </button>
-          <button type="button" className={classes} onClick={handleShowDeleteModal}>
+          <button className={classes} onClick={handleShowDeleteModal}>
             <Trash />
           </button>
-          <button type="button" className={classes} onClick={handleShowRenameModal}>
+          <button className={classes} onClick={handleShowRenameModal}>
             <Edit />
           </button>
         </div>
