@@ -55,9 +55,7 @@ const Channels = () => {
       }
       return (
         <div className='btn-group' key={c.name} onClick={handleSelectChannel} id={c.id}>
-          <button
-            className={`${classes}, w-50`}
-          >
+          <button className={`${classes}, w-50`}>
             {c.name}
           </button>
           <button className={classes} onClick={handleShowDeleteModal}>
