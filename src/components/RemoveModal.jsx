@@ -34,7 +34,7 @@ const RemoveModal = () => {
       </Modal.Header>
       <Modal.Body>
           <p>Are you sure? This will delete channel with all messages.</p>
-          <Button variant='secondary' type='reset' block>
+          <Button variant='secondary' type='reset' block onClick={hideModal}>
             Cancel
           </Button>
           <Button variant='danger' type='submit' block onClick={handleDelete}>
