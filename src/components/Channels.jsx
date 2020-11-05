@@ -44,7 +44,7 @@ const Channels = () => {
       if (!isRemovable(c)) {
         return (
           <button
-            key={c.name}
+            key={`${c.name}, ${c.id}`}
             id={c.id}
             className={classes}
             onClick={handleSelectChannel}
@@ -54,7 +54,7 @@ const Channels = () => {
         );
       }
       return (
-        <div className='btn-group' key={c.name} onClick={handleSelectChannel} id={c.id}>
+        <div className='btn-group' key={`${c.name}, ${c.id}`} onClick={handleSelectChannel} id={c.id}>
           <button className={`${classes}, w-50`}>
             {c.name}
           </button>
