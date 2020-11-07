@@ -1,6 +1,6 @@
 {
   "name": "frontend_l4_chat_project",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Online chat. Made with React, Redux, WebSockets and passion",
   "main": "dist/index.js",
   "bin": {
