@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import update from 'immutability-helper';
+
 import { removeChannel } from '../channels/channelsSlice';
 
 const messagesSlice = createSlice({

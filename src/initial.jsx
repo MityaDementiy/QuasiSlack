@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import Rollbar from 'rollbar';
+
 import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';

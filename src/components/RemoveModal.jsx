@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+
 import { closeModal } from '../features/modals/modalsSlice';
 import routes from '../routes';
 
