@@ -16,6 +16,8 @@ const RemoveModal = () => {
   const deleteChannelId = deleteChannel.id;
   const channelUrl = routes.channelPath(deleteChannelId);
 
+  const [error, setError] = React.useState(null);
+
   const handleDelete = async () => {
     const data = {
       type: 'channels',
@@ -26,7 +28,7 @@ const RemoveModal = () => {
       await axios.delete(channelUrl, { data });
       hideModal();
     } catch (err) {
-      console.log(err.message);
+      setError(err.message);
     }
   };
 
@@ -43,6 +45,7 @@ const RemoveModal = () => {
           <Button variant='danger' type='submit' block onClick={handleDelete}>
             Confirm
           </Button>
+          { error && <div className="alert alert-danger mt-3" role="alert">{error}</div> }
       </Modal.Body>
     </Modal>
   );
