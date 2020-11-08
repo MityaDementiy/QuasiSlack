@@ -8,13 +8,13 @@ import Rollbar from 'rollbar';
 import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
-import { addMessage, initMessages } from './features/messages/messagesSlice';
+import { addMessage, initMessages } from './slices/messagesSlice';
 import {
   addChannel,
   initChannels,
   removeChannel,
   renameChannel,
-} from './features/channels/channelsSlice';
+} from './slices/channelsSlice';
 
 export default ({ channels, currentChannelId, messages }) => {
   if (!getUserName()) {

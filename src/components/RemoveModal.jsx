@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { closeModal } from '../features/modals/modalsSlice';
+import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 
 const RemoveModal = () => {

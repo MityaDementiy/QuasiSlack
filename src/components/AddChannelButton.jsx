@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { openModal } from '../features/modals/modalsSlice';
+import { openModal } from '../slices/modalsSlice';
 
 const AddChannelButton = () => {
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 
 import { validate } from '../utils';
-import { closeModal } from '../features/modals/modalsSlice';
+import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 
 const AddModal = () => {

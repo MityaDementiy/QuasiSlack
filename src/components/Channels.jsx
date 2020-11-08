@@ -3,9 +3,9 @@ import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
 
-import { selectChannel } from '../features/channels/channelsSlice';
+import { selectChannel } from '../slices/channelsSlice';
 import { isRemovable } from '../utils';
-import { openModal } from '../features/modals/modalsSlice';
+import { openModal } from '../slices/modalsSlice';
 
 const Channels = () => {
   const dispatch = useDispatch();
