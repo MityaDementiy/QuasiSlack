@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const defaultChannel = 1;
+
 const channelsSlice = createSlice({
   name: 'channels',
   initialState: {
-    channels: [{ id: 1, name: 'general', removable: false }, { id: 2, name: 'random', removable: false }],
-    currentChannelId: 1,
+    channels: [],
+    currentChannelId: defaultChannel,
   },
   reducers: {
     selectChannel(state, action) {

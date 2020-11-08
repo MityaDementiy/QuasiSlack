@@ -25,6 +25,13 @@ export default ({ channels, currentChannelId, messages }) => {
 
   const store = configureStore({
     reducer: rootReducer,
+    preloadedState: {
+      channels: {
+        channels,
+        currentChannelId,
+      },
+      messages,
+    },
   });
 
   store.dispatch(initMessages(messages));
@@ -55,7 +62,7 @@ export default ({ channels, currentChannelId, messages }) => {
   ReactDom.render(
     <Provider store={store}>
       <UserContext.Provider value={userName}>
-        <App channels={channels} currentChannelId={currentChannelId} messages={messages} />
+        <App />
       </UserContext.Provider>
     </Provider>,
     container,
