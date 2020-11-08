@@ -7,8 +7,8 @@ import AddModal from './AddModal';
 import RemoveModal from './RemoveModal';
 import RenameModal from './RenameModal';
 import Channels from './Channels';
-import ChatRoom from './ChatRoom';
 import MessageForm from './MessageForm';
+import Messages from './Messages';
 
 const modals = {
   adding: AddModal,
@@ -36,7 +36,7 @@ const App = () => {
         </Col>
         <Col sm={9}>
           {modal && <ModalComponent />}
-          <ChatRoom />
+          <Messages />
           <MessageForm />
         </Col>
       </Row>

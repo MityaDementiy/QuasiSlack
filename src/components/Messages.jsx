@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const ChatRoom = () => {
+const Messages = () => {
   const messages = useSelector((state) => state.messages.messages);
   const currentChannelId = useSelector((state) => state.channels.currentChannelId);
   const currentChannelMessages = messages
@@ -22,4 +22,4 @@ const ChatRoom = () => {
   );
 };
 
-export default ChatRoom;
+export default Messages;
