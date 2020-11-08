@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { currentChannelMessagesSelector } from '../slices/selectors';
+
 const Messages = () => {
-  const messages = useSelector((state) => state.messages.messages);
-  const currentChannelId = useSelector((state) => state.channels.currentChannelId);
-  const currentChannelMessages = messages
-    .filter((message) => message.channelId === currentChannelId);
+  const currentChannelMessages = useSelector(currentChannelMessagesSelector);
 
   const renderMessages = currentChannelMessages.map((message) => (
       <div key={message.id}>

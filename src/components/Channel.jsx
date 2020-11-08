@@ -6,11 +6,13 @@ import { Edit, Trash } from 'react-feather';
 import { selectChannel } from '../slices/channelsSlice';
 import { isRemovable } from '../utils';
 import { openModal } from '../slices/modalsSlice';
+import { currentChannelSelector, currentChannelsSelector } from '../slices/selectors';
 
 const Channel = () => {
   const dispatch = useDispatch();
-  const channels = useSelector((state) => state.channels.channels);
-  const currentChannelId = useSelector((state) => state.channels.currentChannelId);
+  const channels = useSelector(currentChannelsSelector);
+  const currentChannel = useSelector(currentChannelSelector);
+  const currentChannelId = currentChannel.id;
 
   const getClasses = (id) => {
     const buttonType = currentChannelId === id ? 'primary' : 'secondary';
