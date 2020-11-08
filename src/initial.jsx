@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDom from 'react-dom';
 import { configureStore } from '@reduxjs/toolkit';
@@ -45,7 +44,8 @@ export default ({ channels, currentChannelId, messages }) => {
     store.dispatch(renameChannel(attributes));
   });
 
-  const rollbar = new Rollbar({
+  // eslint-disable-next-line no-new
+  new Rollbar({
     accessToken: 'a36c303f356b4c8aa59ef1713b1fc2c1',
     captureUncaught: true,
     captureUnhandledRejections: true,
