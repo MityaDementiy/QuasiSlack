@@ -53,7 +53,7 @@ const RenameModal = () => {
             placeholder='Type channel name'
             {...formik.getFieldProps('message')}
             />
-            {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
+            {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <Button variant='primary' type='submit' disabled={formik.isSubmitting}>
             Rename
