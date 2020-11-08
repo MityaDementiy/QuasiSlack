@@ -25,12 +25,16 @@ const App = () => {
     <Container fluid>
       <Row className='vh-100'>
         <Col sm={3}>
-          <h5>Channels</h5>
+          <Row>
+            <Col className='mb-3 d-flex justify-content-between'>
+              <h5>Channels</h5>
+              <AddChannelButton />
+            </Col>
+          </Row>
           <Channels />
-          <AddChannelButton />
         </Col>
         <Col sm={9}>
-          { modal && <ModalComponent />}
+          {modal && <ModalComponent />}
           <ChatRoom />
           <MessageForm />
         </Col>
