@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import update from 'immutability-helper';
 
 const modalSlice = createSlice({
   name: 'modals',
@@ -9,12 +8,10 @@ const modalSlice = createSlice({
   reducers: {
     openModal(state, action) {
       const actionType = action.payload;
-      const key = 'modalType';
-      return update(state, { [key]: { $set: actionType } });
+      return { ...state, modalType: actionType };
     },
     closeModal(state) {
-      const key = 'modalType';
-      return update(state, { [key]: { $set: null } });
+      return { ...state, modalType: null };
     },
   },
 });

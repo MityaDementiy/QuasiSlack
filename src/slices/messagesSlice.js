@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import update from 'immutability-helper';
 
 import { removeChannel } from './channelsSlice';
 
@@ -14,17 +13,15 @@ const messagesSlice = createSlice({
       state.messages.push(message);
     },
     initMessages(state, action) {
-      const messages = action.payload;
-      const key = 'messages';
-      return update(state, { [key]: { $set: messages } });
+      const currentMessages = action.payload;
+      return { ...state, messages: currentMessages };
     },
   },
   extraReducers: {
     [removeChannel]: (state, action) => {
       const id = action.payload;
       const newMessages = state.messages.filter((m) => m.channelId !== id);
-      const key = 'messages';
-      return update(state, { [key]: { $set: newMessages } });
+      return { ...state, messages: newMessages };
     },
   },
 });

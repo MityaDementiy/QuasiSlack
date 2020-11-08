@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import update from 'immutability-helper';
 
 const channelsSlice = createSlice({
   name: 'channels',
@@ -10,27 +9,21 @@ const channelsSlice = createSlice({
   reducers: {
     selectChannel(state, action) {
       const id = action.payload;
-      const key = 'currentChannelId';
-      return update(state, { [key]: { $set: id } });
+      return { ...state, currentChannelId: id };
     },
     addChannel(state, action) {
       const channel = action.payload;
       const { channels } = state;
       channels.push(channel);
-      const key = 'channels';
-      return update(state, { [key]: { $set: channels } });
     },
     initChannels(state, action) {
       const currentChannels = action.payload;
-      const channels = 'channels';
-      return update(state, { [channels]: { $set: currentChannels } });
+      return { ...state, channels: currentChannels };
     },
     removeChannel(state, action) {
       const id = action.payload;
       const newChannels = state.channels.filter((c) => c.id !== id);
-      const channels = 'channels';
-      const currentChannelId = 'currentChannelId';
-      return update(state, { [channels]: { $set: newChannels }, [currentChannelId]: { $set: 1 } });
+      return { ...state, channels: newChannels, currentChannelId: 1 };
     },
     renameChannel(state, action) {
       const { id, name } = action.payload;
