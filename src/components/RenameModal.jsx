@@ -8,7 +8,7 @@ import { validate } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 
-const AddModal = () => {
+const RenameModal = () => {
   const dispatch = useDispatch();
   const hideModal = () => {
     dispatch(closeModal());
@@ -62,4 +62,4 @@ const AddModal = () => {
   );
 };
 
-export default AddModal;
+export default RenameModal;
