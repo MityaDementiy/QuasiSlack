@@ -12,14 +12,14 @@ const ChatRoom = () => {
         <span><b>{message.user}:</b></span><span> {message.text}</span>
       </div>
   ));
-  const vdom = (
+
+  return (
     <div className='card mb-4 h-50 overflow-auto'>
       <div className='card-body h-50 overflow-auto'>
         {renderMessages}
       </div>
     </div>
   );
-  return vdom;
 };
 
 export default ChatRoom;

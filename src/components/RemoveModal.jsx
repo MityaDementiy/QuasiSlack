@@ -28,7 +28,7 @@ const RemoveModal = () => {
     }
   };
 
-  const vdom = (
+  return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
         <Modal.Title>Remove channel</Modal.Title>
@@ -44,7 +44,6 @@ const RemoveModal = () => {
       </Modal.Body>
     </Modal>
   );
-  return vdom;
 };
 
 export default RemoveModal;

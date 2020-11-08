@@ -9,10 +9,10 @@ const AddChannelButton = () => {
     e.preventDefault();
     dispatch(openModal('adding'));
   };
-  const vdom = (
-        <button className='btn btn-light btn-sm' onClick={handleClick}>Add channel</button>
+
+  return (
+    <button className='btn btn-light btn-sm' onClick={handleClick}>Add channel</button>
   );
-  return vdom;
 };
 
 export default AddChannelButton;

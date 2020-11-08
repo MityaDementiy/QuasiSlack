@@ -21,7 +21,8 @@ const getModal = (action) => modals[action];
 const App = () => {
   const modal = useSelector((state) => state.modals.modalType);
   const ModalComponent = getModal(modal);
-  const vdom = (
+
+  return (
     <Container fluid>
       <Row className='vh-100'>
         <Col sm={3}>
@@ -41,7 +42,6 @@ const App = () => {
       </Row>
     </Container>
   );
-  return vdom;
 };
 
 export default App;

@@ -35,7 +35,8 @@ const AddModal = () => {
       }
     },
   });
-  const vdom = (
+
+  return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
           <Modal.Title>Rename channel</Modal.Title>
@@ -59,7 +60,6 @@ const AddModal = () => {
       </Modal.Body>
     </Modal>
   );
-  return vdom;
 };
 
 export default AddModal;
