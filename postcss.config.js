@@ -1,7 +1,9 @@
+/* eslint-disable global-require */
 module.exports = {
-  plugins: {
-    'postcss-import': {},
-    'postcss-preset-env': {},
-    cssnano: {},
-  },
+  plugins: [
+    // eslint-disable-next-line import/no-extraneous-dependencies
+    require('cssnano')({
+      preset: 'default',
+    }),
+  ],
 };
