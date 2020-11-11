@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { validate, UserContext } from '../utils';
+import { validate, UserContext, isBlocked } from '../utils';
 import routes from '../routes';
 import { currentChannelSelector } from '../slices/selectors';
 
@@ -47,7 +47,7 @@ const MessageForm = () => {
           {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <div className='col-2'>
-          <button type='submit' className='btn btn-primary btn-block' disabled={formik.isSubmitting}>Submit</button>
+          <button type='submit' className='btn btn-primary btn-block' disabled={isBlocked(formik.values.message)}>Submit</button>
         </div>
       </div>
     </form>
