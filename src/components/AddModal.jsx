@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
 
-import { validate } from '../utils';
+import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 
@@ -51,7 +51,7 @@ const AddModal = () => {
             />
             {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
           </div>
-          <Button variant='primary' type='submit' disabled={formik.isSubmitting}>
+          <Button variant='primary' type='submit' disabled={isBlocked(formik.values.message)}>
             Submit
           </Button>
         </form>

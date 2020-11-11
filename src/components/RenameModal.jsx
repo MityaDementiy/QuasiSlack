@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
 
-import { validate } from '../utils';
+import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 import { currentChannelSelector } from '../slices/selectors';
@@ -55,7 +55,7 @@ const RenameModal = () => {
             />
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
-        <Button variant='primary' type='submit' disabled={formik.isSubmitting}>
+        <Button variant='primary' type='submit' disabled={isBlocked(formik.values.message)}>
             Rename
         </Button>
         </form>
