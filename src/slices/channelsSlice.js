@@ -24,12 +24,12 @@ const channelsSlice = createSlice({
     },
     removeChannel(state, action) {
       const id = action.payload;
-      const newChannels = state.channels.filter((c) => c.id !== id);
-      return { ...state, channels: newChannels, currentChannelId: defaultChannel };
+      const updatedChannelsList = state.channels.filter((channel) => channel.id !== id);
+      return { ...state, channels: updatedChannelsList, currentChannelId: defaultChannel };
     },
     renameChannel(state, action) {
       const { id, name } = action.payload;
-      const targetChannel = state.channels.find((c) => c.id === id);
+      const targetChannel = state.channels.find((channel) => channel.id === id);
       targetChannel.name = name;
       // eslint-disable-next-line no-param-reassign
       state.currentChannelId = id;
