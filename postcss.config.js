@@ -1,8 +1,8 @@
-/* eslint-disable global-require */
+const cssnano = require('cssnano');
+
 module.exports = {
   plugins: [
-    // eslint-disable-next-line import/no-extraneous-dependencies
-    require('cssnano')({
+    cssnano({
       preset: 'default',
     }),
   ],
