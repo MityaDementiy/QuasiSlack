@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 const getCurrentChannelId = (state) => state.channels.currentChannelId;
-const getMessages = (state) => state.messages.messages;
+const getMessages = (state) => state.messages;
 const getCurrentChannels = (state) => state.channels.channels;
 
 export const currentChannelMessagesSelector = createSelector(

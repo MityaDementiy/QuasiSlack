@@ -8,10 +8,9 @@ import Rollbar from 'rollbar';
 import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
 import rootReducer from './reducers';
-import { addMessage, initMessages } from './slices/messagesSlice';
+import { addMessage } from './slices/messagesSlice';
 import {
   addChannel,
-  initChannels,
   removeChannel,
   renameChannel,
 } from './slices/channelsSlice';
@@ -33,9 +32,6 @@ export default ({ channels, currentChannelId, messages }) => {
       messages,
     },
   });
-
-  store.dispatch(initMessages(messages));
-  store.dispatch(initChannels(channels));
 
   const socket = io();
   socket.on('newMessage', ({ data: { attributes } }) => {
