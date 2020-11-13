@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 const getCurrentChannelId = (state) => state.channels.currentChannelId;
 const getMessages = (state) => state.messages;
-const getCurrentChannels = (state) => state.channels.channels;
+const getChannels = (state) => state.channels.channels;
 
 export const currentChannelMessagesSelector = createSelector(
   [getMessages, getCurrentChannelId],
@@ -10,11 +10,11 @@ export const currentChannelMessagesSelector = createSelector(
 );
 
 export const currentChannelSelector = createSelector(
-  [getCurrentChannels, getCurrentChannelId],
+  [getChannels, getCurrentChannelId],
   (currentChannels, currentChannelId) => currentChannels.find((c) => c.id === currentChannelId),
 );
 
 export const currentChannelsSelector = createSelector(
-  getCurrentChannels,
+  getChannels,
   (currentChannels) => currentChannels,
 );
