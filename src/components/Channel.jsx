@@ -37,12 +37,8 @@ const Channel = ({ channel }) => {
 
   if (!isRemovable(channel)) {
     return (
-      <button
-      id={channel.id}
-      className={classes}
-      onClick={handleSelectChannel}
-      >
-      {channel.name}
+      <button id={channel.id} className={classes} onClick={handleSelectChannel}>
+        {channel.name}
       </button>
     );
   }
