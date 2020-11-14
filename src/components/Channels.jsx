@@ -1,10 +1,18 @@
 import React from 'react';
-import Channel from './Channel';
+import { useSelector } from 'react-redux';
 
-const Channels = () => (
-  <div className='btn-group-vertical d-block'>
-    <Channel />
-  </div>
-);
+import Channel from './Channel';
+import { currentChannelsSelector } from '../slices/selectors';
+
+const Channels = () => {
+  const channels = useSelector(currentChannelsSelector);
+  return (
+    <div className='btn-group-vertical d-block'>
+      {channels.map((channel) => <Channel
+        channel={channel} key={`${channel.name}, ${channel.id}`}
+      />)}
+    </div>
+  );
+};
 
 export default Channels;
