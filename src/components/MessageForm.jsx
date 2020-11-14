@@ -5,12 +5,11 @@ import axios from 'axios';
 
 import { validate, UserContext, isBlocked } from '../utils';
 import routes from '../routes';
-import { currentChannelSelector } from '../slices/channelsSlice';
+import { currentChannelIdSelector } from '../slices/channelsSlice';
 
 const MessageForm = () => {
   const userName = React.useContext(UserContext);
-  const currentChannel = useSelector(currentChannelSelector);
-  const currentChannelId = currentChannel.id;
+  const currentChannelId = useSelector(currentChannelIdSelector);
   const channelUrl = routes.channelMessagesPath(currentChannelId);
 
   const formik = useFormik({

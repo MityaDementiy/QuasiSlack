@@ -32,11 +32,6 @@ const channelsSlice = createSlice({
 
 export const currentChannelIdSelector = (state) => state.channels.currentChannelId;
 export const channelsSelector = (state) => state.channels.channels;
-export const currentChannelSelector = createSelector(
-  [channelsSelector, currentChannelIdSelector],
-  (currentChannels, currentChannelId) => currentChannels
-    .find((channel) => channel.id === currentChannelId),
-);
 
 export const {
   selectChannel, addChannel, removeChannel, renameChannel,

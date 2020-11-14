@@ -7,15 +7,14 @@ import axios from 'axios';
 import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import { currentChannelSelector } from '../slices/channelsSlice';
+import { currentChannelIdSelector } from '../slices/channelsSlice';
 
 const RenameModal = () => {
   const dispatch = useDispatch();
   const hideModal = () => {
     dispatch(closeModal());
   };
-  const renameChannel = useSelector(currentChannelSelector);
-  const renameChannelId = renameChannel.id;
+  const renameChannelId = useSelector(currentChannelIdSelector);
   const channelUrl = routes.channelPath(renameChannelId);
 
   const formik = useFormik({

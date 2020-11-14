@@ -5,15 +5,14 @@ import axios from 'axios';
 
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import { currentChannelSelector } from '../slices/channelsSlice';
+import { currentChannelIdSelector } from '../slices/channelsSlice';
 
 const RemoveModal = () => {
   const dispatch = useDispatch();
   const hideModal = () => {
     dispatch(closeModal());
   };
-  const deleteChannel = useSelector(currentChannelSelector);
-  const deleteChannelId = deleteChannel.id;
+  const deleteChannelId = useSelector(currentChannelIdSelector);
   const channelUrl = routes.channelPath(deleteChannelId);
 
   const [error, setError] = React.useState(null);
