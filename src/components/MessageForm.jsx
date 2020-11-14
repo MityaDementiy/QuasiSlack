@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { validate, UserContext, isBlocked } from '../utils';
 import routes from '../routes';
-import { currentChannelSelector } from '../slices/selectors';
+import { currentChannelSelector } from '../slices/channelsSlice';
 
 const MessageForm = () => {
   const userName = React.useContext(UserContext);

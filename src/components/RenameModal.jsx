@@ -7,7 +7,7 @@ import axios from 'axios';
 import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import { currentChannelSelector } from '../slices/selectors';
+import { currentChannelSelector } from '../slices/channelsSlice';
 
 const RenameModal = () => {
   const dispatch = useDispatch();

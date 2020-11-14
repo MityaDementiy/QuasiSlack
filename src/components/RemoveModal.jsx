@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import { currentChannelSelector } from '../slices/selectors';
+import { currentChannelSelector } from '../slices/channelsSlice';
 
 const RemoveModal = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 const defaultChannel = 1;
 
@@ -29,6 +29,14 @@ const channelsSlice = createSlice({
     },
   },
 });
+
+export const currentChannelIdSelector = (state) => state.channels.currentChannelId;
+export const channelsSelector = (state) => state.channels.channels;
+export const currentChannelSelector = createSelector(
+  [channelsSelector, currentChannelIdSelector],
+  (currentChannels, currentChannelId) => currentChannels
+    .find((channel) => channel.id === currentChannelId),
+);
 
 export const {
   selectChannel, addChannel, removeChannel, renameChannel,

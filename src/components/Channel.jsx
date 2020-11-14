@@ -2,15 +2,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
 
-import { selectChannel } from '../slices/channelsSlice';
+import { selectChannel, currentChannelIdSelector } from '../slices/channelsSlice';
 import { isRemovable, getClasses } from '../utils';
 import { openModal } from '../slices/modalsSlice';
-import { currentChannelSelector } from '../slices/selectors';
 
 const Channel = ({ channel }) => {
   const dispatch = useDispatch();
-  const currentChannel = useSelector(currentChannelSelector);
-  const currentChannelId = currentChannel.id;
+  const currentChannelId = useSelector(currentChannelIdSelector);
 
   const handleSelectChannel = (e) => {
     e.preventDefault();

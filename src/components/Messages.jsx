@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { currentChannelMessagesSelector } from '../slices/selectors';
+import { currentChannelMessagesSelector } from '../slices/messagesSlice';
 
 const Messages = () => {
   const currentChannelMessages = useSelector(currentChannelMessagesSelector);

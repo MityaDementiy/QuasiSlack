@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 import { removeChannel } from './channelsSlice';
 
@@ -21,6 +21,15 @@ const messagesSlice = createSlice({
     },
   },
 });
+
+const getMessages = (state) => state.messages;
+const getCurrentChannelId = (state) => state.channels.currentChannelId;
+
+export const currentChannelMessagesSelector = createSelector(
+  [getMessages, getCurrentChannelId],
+  (messages, currentChannelId) => messages
+    .filter((message) => message.channelId === currentChannelId),
+);
 
 export const { addMessage } = messagesSlice.actions;
 
