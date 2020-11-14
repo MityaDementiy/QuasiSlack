@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import faker from 'faker';
 import React from 'react';
 import _ from 'lodash';
+import cn from 'classnames';
 
 const isCensoredWordInMessage = (message, censored) => {
   const intersection = _.intersection(message, censored);
@@ -30,3 +31,9 @@ export const UserContext = React.createContext();
 export const isRemovable = (channel) => channel.removable;
 
 export const isBlocked = (value) => value === '';
+
+export const getClasses = (id, currentChannelId) => {
+  const buttonType = currentChannelId === id ? 'primary' : 'secondary';
+  const classNames = cn('btn', 'mb-3', `btn-${buttonType}`, 'btn-lg');
+  return classNames;
+};

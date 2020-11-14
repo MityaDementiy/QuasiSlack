@@ -1,10 +1,9 @@
 import React from 'react';
-import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
 
 import { selectChannel } from '../slices/channelsSlice';
-import { isRemovable } from '../utils';
+import { isRemovable, getClasses } from '../utils';
 import { openModal } from '../slices/modalsSlice';
 import { currentChannelSelector } from '../slices/selectors';
 
@@ -12,12 +11,6 @@ const Channel = ({ channel }) => {
   const dispatch = useDispatch();
   const currentChannel = useSelector(currentChannelSelector);
   const currentChannelId = currentChannel.id;
-
-  const getClasses = (id) => {
-    const buttonType = currentChannelId === id ? 'primary' : 'secondary';
-    const classNames = cn('btn', 'mb-3', `btn-${buttonType}`, 'btn-lg');
-    return classNames;
-  };
 
   const handleSelectChannel = (e) => {
     e.preventDefault();
@@ -40,7 +33,7 @@ const Channel = ({ channel }) => {
     dispatch(openModal('renaming'));
   };
 
-  const classes = getClasses(channel.id);
+  const classes = getClasses(channel.id, currentChannelId);
 
   if (!isRemovable(channel)) {
     return (
