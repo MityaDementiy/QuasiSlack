@@ -2,6 +2,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import i18next from 'i18next';
 
 import { validate, UserContext, isBlocked } from '../utils';
 import routes from '../routes';
@@ -40,13 +41,13 @@ const MessageForm = () => {
             type='text'
             id='message'
             className='form-control'
-            placeholder='Type message'
+            placeholder={i18next.t('interfaceTexts.messageFormPlaceholder')}
             {...formik.getFieldProps('message')}
           />
           {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <div className='col-2'>
-          <button type='submit' className='btn btn-primary btn-block' disabled={isBlocked(formik.values.message)}>Submit</button>
+  <button type='submit' className='btn btn-primary btn-block' disabled={isBlocked(formik.values.message)}>{i18next.t('interfaceTexts.submitButton')}</button>
         </div>
       </div>
     </form>

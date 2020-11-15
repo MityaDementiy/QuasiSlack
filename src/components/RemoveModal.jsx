@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import i18next from 'i18next';
 
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
@@ -34,15 +35,15 @@ const RemoveModal = () => {
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Remove channel</Modal.Title>
+  <Modal.Title>{i18next.t('interfaceTexts.removeModalHeader')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-          <p>Are you sure? This will delete channel with all messages.</p>
+  <p>{i18next.t('interfaceTexts.removeModalWarning')}</p>
           <Button variant='secondary' type='reset' block onClick={hideModal}>
-            Cancel
+            {i18next.t('interfaceTexts.cancelButton')}
           </Button>
           <Button variant='danger' type='submit' block onClick={handleDelete}>
-            Confirm
+          {i18next.t('interfaceTexts.confirmButton')}
           </Button>
           { error && <div className="alert alert-danger mt-3" role="alert">{error}</div> }
       </Modal.Body>

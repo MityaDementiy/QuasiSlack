@@ -3,6 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import i18next from 'i18next';
 
 import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
@@ -37,7 +38,7 @@ const AddModal = () => {
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Add channel</Modal.Title>
+  <Modal.Title>{i18next.t('interfaceTexts.addModalHeader')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
@@ -46,13 +47,13 @@ const AddModal = () => {
               type='text'
               id='message'
               className='form-control'
-              placeholder='Type channel name'
+              placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
               {...formik.getFieldProps('message')}
             />
             {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
           </div>
           <Button variant='primary' type='submit' disabled={isBlocked(formik.values.message)}>
-            Submit
+            {i18next.t('interfaceTexts.submitButton')}
           </Button>
         </form>
       </Modal.Body>

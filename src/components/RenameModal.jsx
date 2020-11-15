@@ -3,6 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import i18next from 'i18next';
 
 import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
@@ -40,7 +41,7 @@ const RenameModal = () => {
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
-          <Modal.Title>Rename channel</Modal.Title>
+  <Modal.Title>{i18next.t('interfaceTexts.renameModalHeader')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
@@ -49,13 +50,13 @@ const RenameModal = () => {
             type='text'
             id='message'
             className='form-control'
-            placeholder='Type channel name'
+            placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
             {...formik.getFieldProps('message')}
             />
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <Button variant='primary' type='submit' disabled={isBlocked(formik.values.message)}>
-            Rename
+            {i18next.t('interfaceTexts.renameButton')}
         </Button>
         </form>
       </Modal.Body>

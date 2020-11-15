@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import i18next from 'i18next';
 
 import AddChannelButton from './AddChannelButton';
 import AddModal from './AddModal';
@@ -28,7 +29,7 @@ const App = () => {
         <Col sm={3}>
           <Row>
             <Col className='mb-3 d-flex justify-content-between'>
-              <h5>Channels</h5>
+              <h5>{i18next.t('interfaceTexts.channelsListHeader')}</h5>
               <AddChannelButton />
             </Col>
           </Row>
