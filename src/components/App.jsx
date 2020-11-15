@@ -26,16 +26,20 @@ const App = () => {
   return (
     <Container fluid>
       <Row className='vh-100'>
-        <Col sm={3}>
+        <Col sm={12} md={4} lg={3}>
           <Row>
             <Col className='mb-3 d-flex justify-content-between'>
               <h5>{i18next.t('interfaceTexts.channelsListHeader')}</h5>
               <AddChannelButton />
             </Col>
           </Row>
-          <Channels />
+          <Row>
+            <Col>
+              <Channels />
+            </Col>
+          </Row>
         </Col>
-        <Col sm={9}>
+        <Col sm={12} md={8} lg={9}>
           {modal && <ModalComponent />}
           <Messages />
           <MessageForm />
