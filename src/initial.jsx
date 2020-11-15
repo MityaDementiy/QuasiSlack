@@ -4,6 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import Rollbar from 'rollbar';
+import i18next from 'i18next';
 
 import App from './components/App';
 import { setUserName, getUserName, UserContext } from './utils';
@@ -14,6 +15,7 @@ import {
   removeChannel,
   renameChannel,
 } from './slices/channelsSlice';
+import en from './locales/en';
 
 export default ({ channels, currentChannelId, messages }) => {
   if (!getUserName()) {
@@ -52,6 +54,14 @@ export default ({ channels, currentChannelId, messages }) => {
     accessToken: 'a36c303f356b4c8aa59ef1713b1fc2c1',
     captureUncaught: true,
     captureUnhandledRejections: true,
+  });
+
+  i18next.init({
+    lng: 'en',
+    debug: true,
+    resources: {
+      en,
+    },
   });
 
   const container = document.querySelector('.container');

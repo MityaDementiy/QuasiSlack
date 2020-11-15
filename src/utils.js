@@ -3,6 +3,7 @@ import faker from 'faker';
 import React from 'react';
 import _ from 'lodash';
 import cn from 'classnames';
+import i18next from 'i18next';
 
 const isCensoredWordInMessage = (message, censored) => {
   const intersection = _.intersection(message, censored);
@@ -11,10 +12,10 @@ const isCensoredWordInMessage = (message, censored) => {
 
 export const validate = (values) => {
   const errors = {};
-  const censoredWords = ['козёл', 'дурак', 'балбес', 'козел', 'придурок'];
+  const censoredWords = ['дурак', 'балбес', 'придурок'];
   const messageWords = values.message.split(' ');
   if (isCensoredWordInMessage(messageWords, censoredWords)) {
-    errors.message = 'Be kind and polite, do not use censored words!';
+    errors.message = i18next.t('alertMessages.censoredWords');
   }
 
   return errors;
