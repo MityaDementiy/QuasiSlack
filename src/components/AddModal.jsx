@@ -14,6 +14,12 @@ const AddModal = () => {
   const hideModal = () => {
     dispatch(closeModal());
   };
+
+  const addModalInputRef = React.useRef(null);
+  React.useEffect(() => {
+    addModalInputRef.current.focus();
+  });
+
   const channelsUrl = routes.channelsPath();
   const formik = useFormik({
     initialValues: {
@@ -49,6 +55,7 @@ const AddModal = () => {
               className='form-control'
               placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
               {...formik.getFieldProps('message')}
+              ref={addModalInputRef}
             />
             {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
           </div>

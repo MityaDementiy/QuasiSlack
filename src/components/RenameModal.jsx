@@ -18,6 +18,11 @@ const RenameModal = () => {
   const renameChannelId = useSelector(currentChannelIdSelector);
   const channelUrl = routes.channelPath(renameChannelId);
 
+  const renameModalInputRef = React.useRef(null);
+  React.useEffect(() => {
+    renameModalInputRef.current.focus();
+  });
+
   const formik = useFormik({
     initialValues: {
       message: '',
@@ -52,6 +57,7 @@ const RenameModal = () => {
             className='form-control'
             placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
             {...formik.getFieldProps('message')}
+            ref={renameModalInputRef}
             />
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
