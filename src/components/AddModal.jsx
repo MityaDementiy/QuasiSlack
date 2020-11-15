@@ -44,7 +44,7 @@ const AddModal = () => {
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
-  <Modal.Title>{i18next.t('interfaceTexts.addModalHeader')}</Modal.Title>
+        <Modal.Title>{i18next.t('interfaceTexts.addModalHeader')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
