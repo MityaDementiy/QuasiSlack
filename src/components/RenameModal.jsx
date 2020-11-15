@@ -34,8 +34,8 @@ const RenameModal = () => {
         name: newChannelName,
       };
       try {
-        await axios.patch(channelUrl, { data: { attributes } });
         formik.resetForm();
+        await axios.patch(channelUrl, { data: { attributes } });
         hideModal();
       } catch (err) {
         setFieldError('message', err.message);
