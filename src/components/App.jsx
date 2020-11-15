@@ -10,6 +10,7 @@ import RenameModal from './RenameModal';
 import Channels from './Channels';
 import MessageForm from './MessageForm';
 import Messages from './Messages';
+import { modalSelector } from '../slices/modalsSlice';
 
 const modals = {
   adding: AddModal,
@@ -20,7 +21,7 @@ const modals = {
 const getModal = (action) => modals[action];
 
 const App = () => {
-  const modal = useSelector((state) => state.modals.modalType);
+  const modal = useSelector(modalSelector);
   const ModalComponent = getModal(modal);
 
   return (
