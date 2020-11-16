@@ -6,8 +6,7 @@ import { openModal } from '../slices/modalsSlice';
 
 const AddChannelButton = () => {
   const dispatch = useDispatch();
-  const handleClick = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
     dispatch(openModal('adding'));
   };
 

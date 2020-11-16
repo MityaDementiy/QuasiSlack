@@ -21,13 +21,11 @@ const Channel = ({ channel }) => {
     }
   };
 
-  const handleShowDeleteModal = (e) => {
-    e.preventDefault();
+  const handleShowDeleteModal = () => {
     dispatch(openModal('removing'));
   };
 
-  const handleShowRenameModal = (e) => {
-    e.preventDefault();
+  const handleShowRenameModal = () => {
     dispatch(openModal('renaming'));
   };
 
