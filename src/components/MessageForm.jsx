@@ -42,20 +42,21 @@ const MessageForm = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div className='form-group form-row'>
-        <div className='col-9'>
+      <div className="form-group form-row">
+        <div className="col-9">
           <input
-            type='text'
-            id='message'
-            className='form-control'
+            type="text"
+            id="message"
+            className="form-control"
             placeholder={i18next.t('interfaceTexts.messageFormPlaceholder')}
-            {...formik.getFieldProps('message')}
+            onChange={formik.handleChange}
+            value={formik.values.message}
             ref={messageInputRef}
           />
           {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
-        <div className='col-3'>
-          <button type='submit' className='btn btn-primary btn-block' disabled={isBlocked(formik.values.message)}>{i18next.t('interfaceTexts.submitButton')}</button>
+        <div className="col-3">
+          <button type="submit" className="btn btn-primary btn-block" disabled={isBlocked(formik.values.message)}>{i18next.t('interfaceTexts.submitButton')}</button>
         </div>
       </div>
     </form>

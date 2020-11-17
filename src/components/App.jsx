@@ -26,10 +26,10 @@ const App = () => {
 
   return (
     <Container fluid>
-      <Row className='vh-100'>
+      <Row className="vh-100">
         <Col sm={12} md={4} lg={3}>
           <Row>
-            <Col className='mb-3 d-flex justify-content-between'>
+            <Col className="mb-3 d-flex justify-content-between">
               <h5>{i18next.t('interfaceTexts.channelsListHeader')}</h5>
               <AddChannelButton />
             </Col>

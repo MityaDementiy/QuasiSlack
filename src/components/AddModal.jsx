@@ -48,18 +48,19 @@ const AddModal = () => {
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
-          <div className='form-group form-row'>
+          <div className="form-group form-row">
             <input
-              type='text'
-              id='message'
-              className='form-control'
+              type="text"
+              id="message"
+              className="form-control"
               placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
-              {...formik.getFieldProps('message')}
+              onChange={formik.handleChange}
+              value={formik.values.message}
               ref={addModalInputRef}
             />
             {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
           </div>
-          <Button variant='primary' type='submit' disabled={isBlocked(formik.values.message)}>
+          <Button variant="primary" type="submit" disabled={isBlocked(formik.values.message)}>
             {i18next.t('interfaceTexts.submitButton')}
           </Button>
         </form>

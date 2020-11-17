@@ -46,24 +46,25 @@ const RenameModal = () => {
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
-  <Modal.Title>{i18next.t('interfaceTexts.renameModalHeader')}</Modal.Title>
+        <Modal.Title>{i18next.t('interfaceTexts.renameModalHeader')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
-        <div className='form-group form-row'>
+          <div className="form-group form-row">
             <input
-            type='text'
-            id='message'
-            className='form-control'
-            placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
-            {...formik.getFieldProps('message')}
-            ref={renameModalInputRef}
+              type="text"
+              id="message"
+              className="form-control"
+              placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
+              onChange={formik.handleChange}
+              value={formik.values.message}
+              ref={renameModalInputRef}
             />
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
-        </div>
-        <Button variant='primary' type='submit' disabled={isBlocked(formik.values.message)}>
+          </div>
+          <Button variant="primary" type="submit" disabled={isBlocked(formik.values.message)}>
             {i18next.t('interfaceTexts.renameButton')}
-        </Button>
+          </Button>
         </form>
       </Modal.Body>
     </Modal>

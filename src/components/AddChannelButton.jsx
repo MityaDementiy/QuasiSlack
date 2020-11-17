@@ -11,7 +11,7 @@ const AddChannelButton = () => {
   };
 
   return (
-    <button className='btn btn-light btn-sm' onClick={handleClick}>{i18next.t('interfaceTexts.addChannelButton')}</button>
+    <button type="button" className="btn btn-light btn-sm" onClick={handleClick}>{i18next.t('interfaceTexts.addChannelButton')}</button>
   );
 };
 

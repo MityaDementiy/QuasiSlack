@@ -33,20 +33,20 @@ const Channel = ({ channel }) => {
 
   if (!isRemovable(channel)) {
     return (
-      <button id={channel.id} className={classes} onClick={handleSelectChannel}>
+      <button type="button" id={channel.id} className={classes} onClick={handleSelectChannel}>
         {channel.name}
       </button>
     );
   }
   return (
-    <div className='btn-group' onClick={handleSelectChannel} id={channel.id}>
-      <button className={`${classes}, w-50`}>
+    <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel} onKeyPress={handleSelectChannel} id={channel.id}>
+      <button type="button" className={`${classes}, w-50`}>
         {channel.name}
       </button>
-      <button className={classes} onClick={handleShowDeleteModal}>
+      <button type="button" className={classes} onClick={handleShowDeleteModal}>
         <Trash />
       </button>
-      <button className={classes} onClick={handleShowRenameModal}>
+      <button type="button" className={classes} onClick={handleShowRenameModal}>
         <Edit />
       </button>
     </div>
