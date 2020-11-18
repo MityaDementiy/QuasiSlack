@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
+import cn from 'classnames';
 
 import { selectChannel, currentChannelIdSelector } from '../slices/channelsSlice';
-import { isRemovable, getClasses } from '../utils';
+import { isRemovable } from '../utils';
 import { openModal } from '../slices/modalsSlice';
 
 const Channel = ({ channel }) => {
@@ -27,6 +28,12 @@ const Channel = ({ channel }) => {
 
   const handleShowRenameModal = () => {
     dispatch(openModal('renaming'));
+  };
+
+  const getClasses = (id, activeChannelId) => {
+    const buttonType = activeChannelId === id ? 'primary' : 'secondary';
+    const classNames = cn('btn', 'mb-3', `btn-${buttonType}`, 'btn-lg');
+    return classNames;
   };
 
   const classes = getClasses(channel.id, currentChannelId);

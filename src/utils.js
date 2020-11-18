@@ -2,7 +2,6 @@ import Cookies from 'js-cookie';
 import faker from 'faker';
 import React from 'react';
 import _ from 'lodash';
-import cn from 'classnames';
 import i18next from 'i18next';
 
 const isCensoredWordInMessage = (message, censored) => {
@@ -32,9 +31,3 @@ export const UserContext = React.createContext();
 export const isRemovable = (channel) => channel.removable;
 
 export const isBlocked = (value) => value === '';
-
-export const getClasses = (id, currentChannelId) => {
-  const buttonType = currentChannelId === id ? 'primary' : 'secondary';
-  const classNames = cn('btn', 'mb-3', `btn-${buttonType}`, 'btn-lg');
-  return classNames;
-};
