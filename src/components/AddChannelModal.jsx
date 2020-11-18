@@ -9,7 +9,7 @@ import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 
-const AddModal = () => {
+const AddChannelModal = () => {
   const dispatch = useDispatch();
   const hideModal = () => {
     dispatch(closeModal());
@@ -69,4 +69,4 @@ const AddModal = () => {
   );
 };
 
-export default AddModal;
+export default AddChannelModal;

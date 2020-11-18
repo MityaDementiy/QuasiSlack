@@ -4,7 +4,7 @@ import i18next from 'i18next';
 
 import { openModal } from '../slices/modalsSlice';
 
-const AddChannelButton = () => {
+const ShowAddChannelModal = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(openModal('adding'));
@@ -15,4 +15,4 @@ const AddChannelButton = () => {
   );
 };
 
-export default AddChannelButton;
+export default ShowAddChannelModal;

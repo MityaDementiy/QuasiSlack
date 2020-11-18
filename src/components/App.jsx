@@ -3,19 +3,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import i18next from 'i18next';
 
-import AddChannelButton from './AddChannelButton';
-import AddModal from './AddModal';
-import RemoveModal from './RemoveModal';
-import RenameModal from './RenameModal';
+import ShowAddChannelModal from './ShowAddChannelModal';
+import AddChannelModal from './AddChannelModal';
+import RemoveChannelModal from './RemoveChannelModal';
+import RenameChannelModal from './RenameChannelModal';
 import Channels from './Channels';
 import MessageForm from './MessageForm';
 import Messages from './Messages';
 import { modalSelector } from '../slices/modalsSlice';
 
 const modals = {
-  adding: AddModal,
-  removing: RemoveModal,
-  renaming: RenameModal,
+  adding: AddChannelModal,
+  removing: RemoveChannelModal,
+  renaming: RenameChannelModal,
 };
 
 const getModal = (action) => modals[action];
@@ -31,7 +31,7 @@ const App = () => {
           <Row>
             <Col className="mb-3 d-flex justify-content-between">
               <h5>{i18next.t('interfaceTexts.channelsListHeader')}</h5>
-              <AddChannelButton />
+              <ShowAddChannelModal />
             </Col>
           </Row>
           <Row>

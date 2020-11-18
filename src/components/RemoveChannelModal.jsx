@@ -8,7 +8,7 @@ import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 import { currentChannelIdSelector } from '../slices/channelsSlice';
 
-const RemoveModal = () => {
+const RemoveChannelModal = () => {
   const dispatch = useDispatch();
   const hideModal = () => {
     dispatch(closeModal());
@@ -51,4 +51,4 @@ const RemoveModal = () => {
   );
 };
 
-export default RemoveModal;
+export default RemoveChannelModal;
