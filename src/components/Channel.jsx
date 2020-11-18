@@ -13,12 +13,12 @@ const Channel = ({ channel }) => {
 
   const handleSelectChannel = (e) => {
     e.preventDefault();
-    const targetElement = e.target;
-    if (targetElement.innerHTML === 'general' || targetElement.innerHTML === 'random') {
-      dispatch(selectChannel(parseInt(targetElement.id, 10)));
+    const targetId = e.target.id;
+    if (!targetId) {
+      const parentId = e.target.parentNode.id;
+      dispatch(selectChannel(parseInt(parentId, 10)));
     } else {
-      const closestButtonGroup = targetElement.closest('.btn-group');
-      dispatch(selectChannel(parseInt(closestButtonGroup.id, 10)));
+      dispatch(selectChannel(parseInt(targetId, 10)));
     }
   };
 
