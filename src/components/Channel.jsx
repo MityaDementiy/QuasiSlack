@@ -12,7 +12,6 @@ const Channel = ({ channel }) => {
   const currentChannelId = useSelector(currentChannelIdSelector);
 
   const handleSelectChannel = (e) => {
-    e.preventDefault();
     const targetId = e.currentTarget.id;
     dispatch(selectChannel(parseInt(targetId, 10)));
   };
