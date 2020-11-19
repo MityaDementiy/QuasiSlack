@@ -11,9 +11,8 @@ const Channel = ({ channel }) => {
   const dispatch = useDispatch();
   const currentChannelId = useSelector(currentChannelIdSelector);
 
-  const handleSelectChannel = (e) => {
-    const targetId = e.currentTarget.id;
-    dispatch(selectChannel(parseInt(targetId, 10)));
+  const handleSelectChannel = (id) => () => {
+    dispatch(selectChannel(parseInt(id, 10)));
   };
 
   const handleShowDeleteModal = () => {
@@ -34,13 +33,13 @@ const Channel = ({ channel }) => {
 
   if (!isRemovable(channel)) {
     return (
-      <button type="button" id={channel.id} className={classes} onClick={handleSelectChannel}>
+      <button type="button" id={channel.id} className={classes} onClick={handleSelectChannel(channel.id)}>
         {channel.name}
       </button>
     );
   }
   return (
-    <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel} onKeyPress={handleSelectChannel} id={channel.id}>
+    <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channel.id)} onKeyPress={handleSelectChannel(channel.id)} id={channel.id}>
       <button type="button" className={`${classes}, w-50`}>
         {channel.name}
       </button>
