@@ -13,13 +13,8 @@ const Channel = ({ channel }) => {
 
   const handleSelectChannel = (e) => {
     e.preventDefault();
-    const targetId = e.target.id;
-    if (!targetId) {
-      const parentId = e.target.parentNode.id;
-      dispatch(selectChannel(parseInt(parentId, 10)));
-    } else {
-      dispatch(selectChannel(parseInt(targetId, 10)));
-    }
+    const targetId = e.currentTarget.id;
+    dispatch(selectChannel(parseInt(targetId, 10)));
   };
 
   const handleShowDeleteModal = () => {
