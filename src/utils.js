@@ -1,6 +1,5 @@
 import Cookies from 'js-cookie';
 import faker from 'faker';
-import React from 'react';
 import _ from 'lodash';
 import i18next from 'i18next';
 
@@ -25,8 +24,6 @@ const createUserName = () => faker.name.findName();
 export const getUserName = () => Cookies.get('userName');
 
 export const setUserName = () => Cookies.set('userName', createUserName());
-
-export const UserContext = React.createContext();
 
 export const isRemovable = (channel) => channel.removable;
 

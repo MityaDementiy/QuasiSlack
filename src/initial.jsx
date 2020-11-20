@@ -7,7 +7,7 @@ import Rollbar from 'rollbar';
 import i18next from 'i18next';
 
 import App from './components/App';
-import { setUserName, getUserName, UserContext } from './utils';
+import { setUserName, getUserName } from './utils';
 import rootReducer from './reducers';
 import { addMessage } from './slices/messagesSlice';
 import {
@@ -16,6 +16,7 @@ import {
   renameChannel,
 } from './slices/channelsSlice';
 import en from './locales/en';
+import UserContext from './Context';
 
 export default ({ channels, currentChannelId, messages }) => {
   if (!getUserName()) {

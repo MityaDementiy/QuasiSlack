@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import i18next from 'i18next';
 
-import { validate, UserContext, isBlocked } from '../utils';
+import { validate, isBlocked } from '../utils';
 import routes from '../routes';
 import { currentChannelIdSelector } from '../slices/channelsSlice';
 import { modalSelector } from '../slices/modalsSlice';
+import UserContext from '../Context';
 
 const MessageForm = () => {
   const userName = React.useContext(UserContext);
