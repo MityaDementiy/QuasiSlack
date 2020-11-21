@@ -5,11 +5,10 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 import { currentChannelIdSelector } from '../slices/channelsSlice';
-import { SubmitChannelSchema } from '../validator';
+import SubmitChannelSchema from '../validator';
 
 const RemoveChannelModal = () => {
   const dispatch = useDispatch();
@@ -64,7 +63,7 @@ const RemoveChannelModal = () => {
             />
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
           </div>
-          <Button variant="primary" type="submit" disabled={isBlocked(formik.values.message)}>
+          <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}>
             {t('interfaceTexts.renameButton')}
           </Button>
         </form>

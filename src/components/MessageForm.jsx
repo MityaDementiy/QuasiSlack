@@ -4,12 +4,10 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { isBlocked } from '../utils';
 import routes from '../routes';
 import { currentChannelIdSelector } from '../slices/channelsSlice';
 import { modalSelector } from '../slices/modalsSlice';
 import UserContext from '../Context';
-import { MessageSchema } from '../validator';
 
 const MessageForm = () => {
   const userName = React.useContext(UserContext);
@@ -22,7 +20,6 @@ const MessageForm = () => {
     initialValues: {
       message: '',
     },
-    validationSchema: MessageSchema,
     onSubmit: async (values, { setFieldError }) => {
       const messageText = values.message;
       const attributes = {
@@ -59,7 +56,7 @@ const MessageForm = () => {
           {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
         </div>
         <div className="col-3">
-          <button type="submit" className="btn btn-primary btn-block" disabled={isBlocked(formik.values.message)}>{t('interfaceTexts.submitButton')}</button>
+          <button type="submit" className="btn btn-primary btn-block" disabled={formik.isSubmitting || !formik.dirty}>{t('interfaceTexts.submitButton')}</button>
         </div>
       </div>
     </form>

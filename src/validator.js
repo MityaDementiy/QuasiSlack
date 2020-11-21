@@ -1,13 +1,8 @@
 import * as Yup from 'yup';
 
-export const SubmitChannelSchema = Yup.object().shape({
+export default Yup.object().shape({
   message: Yup.string()
     .min(3, 'Too short, minimum length is 3 symbols!')
     .max(10, 'Too long, maximum length is 10 symbols!')
-    .required('Required'),
-});
-
-export const MessageSchema = Yup.object().shape({
-  firstName: Yup.string()
     .required('Required'),
 });

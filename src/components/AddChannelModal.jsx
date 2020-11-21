@@ -1,14 +1,13 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { isBlocked } from '../utils';
-import { closeModal } from '../slices/modalsSlice';
+import { closeModal, modalSelector } from '../slices/modalsSlice';
 import routes from '../routes';
-import { SubmitChannelSchema } from '../validator';
+import SubmitChannelSchema from '../validator';
 
 const AddChannelModal = () => {
   const dispatch = useDispatch();
@@ -16,11 +15,7 @@ const AddChannelModal = () => {
   const hideModal = () => {
     dispatch(closeModal());
   };
-
-  const addModalInputRef = React.useRef(null);
-  React.useEffect(() => {
-    addModalInputRef.current.focus();
-  });
+  const modalType = useSelector(modalSelector);
 
   const channelsUrl = routes.channelsPath();
   const formik = useFormik({
@@ -43,6 +38,11 @@ const AddChannelModal = () => {
     },
   });
 
+  const addModalInputRef = React.useRef(null);
+  React.useEffect(() => {
+    addModalInputRef.current.focus();
+  }, [modalType]);
+
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
@@ -60,9 +60,9 @@ const AddChannelModal = () => {
               value={formik.values.message}
               ref={addModalInputRef}
             />
-            {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
+            {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
           </div>
-          <Button variant="primary" type="submit" disabled={isBlocked(formik.values.message)}>
+          <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}>
             {t('interfaceTexts.submitButton')}
           </Button>
         </form>

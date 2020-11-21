@@ -8,5 +8,3 @@ export const getUserName = () => Cookies.get('userName');
 export const setUserName = () => Cookies.set('userName', createUserName());
 
 export const isRemovable = (channel) => channel.removable;
-
-export const isBlocked = (value) => value === '';
