@@ -27,8 +27,8 @@ const MessageForm = () => {
         text: messageText,
       };
       try {
-        formik.resetForm();
         await axios.post(channelUrl, { data: { attributes } });
+        formik.resetForm();
       } catch (err) {
         setFieldError('message', err.message);
       }
