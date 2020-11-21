@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { validate, isBlocked } from '../utils';
+import { isBlocked } from '../utils';
 import routes from '../routes';
 import { currentChannelIdSelector } from '../slices/channelsSlice';
 import { modalSelector } from '../slices/modalsSlice';
 import UserContext from '../Context';
+import { MessageSchema } from '../validator';
 
 const MessageForm = () => {
   const userName = React.useContext(UserContext);
@@ -21,7 +22,7 @@ const MessageForm = () => {
     initialValues: {
       message: '',
     },
-    validate,
+    validationSchema: MessageSchema,
     onSubmit: async (values, { setFieldError }) => {
       const messageText = values.message;
       const attributes = {

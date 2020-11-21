@@ -5,9 +5,10 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { validate, isBlocked } from '../utils';
+import { isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
+import { SubmitChannelSchema } from '../validator';
 
 const AddChannelModal = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const AddChannelModal = () => {
     initialValues: {
       message: '',
     },
-    validate,
+    validationSchema: SubmitChannelSchema,
     onSubmit: async (values, { setFieldError }) => {
       const channelName = values.message;
       const attributes = {
