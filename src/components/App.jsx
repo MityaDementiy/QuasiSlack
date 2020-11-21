@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import ShowAddChannelModal from './ShowAddChannelModal';
 import AddChannelModal from './AddChannelModal';
@@ -23,6 +23,7 @@ const getModal = (action) => modals[action];
 const App = () => {
   const modal = useSelector(modalSelector);
   const ModalComponent = getModal(modal);
+  const { t } = useTranslation();
 
   return (
     <Container fluid>
@@ -30,7 +31,7 @@ const App = () => {
         <Col sm={12} md={4} lg={3}>
           <Row>
             <Col className="mb-3 d-flex justify-content-between">
-              <h5>{i18next.t('interfaceTexts.channelsListHeader')}</h5>
+              <h5>{t('interfaceTexts.channelsListHeader')}</h5>
               <ShowAddChannelModal />
             </Col>
           </Row>

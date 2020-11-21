@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
@@ -12,6 +12,7 @@ import { currentChannelIdSelector } from '../slices/channelsSlice';
 
 const RemoveChannelModal = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const hideModal = () => {
     dispatch(closeModal());
   };
@@ -46,7 +47,7 @@ const RemoveChannelModal = () => {
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
-        <Modal.Title>{i18next.t('interfaceTexts.renameModalHeader')}</Modal.Title>
+        <Modal.Title>{t('interfaceTexts.renameModalHeader')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
@@ -55,7 +56,7 @@ const RemoveChannelModal = () => {
               type="text"
               id="message"
               className="form-control"
-              placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
+              placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
               value={formik.values.message}
               ref={renameModalInputRef}
@@ -63,7 +64,7 @@ const RemoveChannelModal = () => {
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
           </div>
           <Button variant="primary" type="submit" disabled={isBlocked(formik.values.message)}>
-            {i18next.t('interfaceTexts.renameButton')}
+            {t('interfaceTexts.renameButton')}
           </Button>
         </form>
       </Modal.Body>

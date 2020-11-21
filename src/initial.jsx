@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import Rollbar from 'rollbar';
 import i18next from 'i18next';
+import './i18n';
 
 import App from './components/App';
 import { setUserName, getUserName } from './utils';

@@ -1,17 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import { openModal } from '../slices/modalsSlice';
 
 const ShowAddChannelModal = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const handleClick = () => {
     dispatch(openModal('adding'));
   };
 
   return (
-    <button type="button" className="btn btn-light btn-sm" onClick={handleClick}>{i18next.t('interfaceTexts.addChannelButton')}</button>
+    <button type="button" className="btn btn-light btn-sm" onClick={handleClick}>{t('interfaceTexts.addChannelButton')}</button>
   );
 };
 

@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import { validate, isBlocked } from '../utils';
 import { closeModal } from '../slices/modalsSlice';
@@ -11,6 +11,7 @@ import routes from '../routes';
 
 const AddChannelModal = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const hideModal = () => {
     dispatch(closeModal());
   };
@@ -44,7 +45,7 @@ const AddChannelModal = () => {
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
-        <Modal.Title>{i18next.t('interfaceTexts.addModalHeader')}</Modal.Title>
+        <Modal.Title>{t('interfaceTexts.addModalHeader')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
@@ -53,7 +54,7 @@ const AddChannelModal = () => {
               type="text"
               id="message"
               className="form-control"
-              placeholder={i18next.t('interfaceTexts.modalFormPlaceholder')}
+              placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
               value={formik.values.message}
               ref={addModalInputRef}
@@ -61,7 +62,7 @@ const AddChannelModal = () => {
             {formik.errors.message ? (<div className="alert alert-danger" role="alert">{formik.errors.message}</div>) : null}
           </div>
           <Button variant="primary" type="submit" disabled={isBlocked(formik.values.message)}>
-            {i18next.t('interfaceTexts.submitButton')}
+            {t('interfaceTexts.submitButton')}
           </Button>
         </form>
       </Modal.Body>
