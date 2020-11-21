@@ -19,11 +19,6 @@ const RemoveChannelModal = () => {
   const renameChannelId = useSelector(currentChannelIdSelector);
   const channelUrl = routes.channelPath(renameChannelId);
 
-  const renameModalInputRef = React.useRef(null);
-  React.useEffect(() => {
-    renameModalInputRef.current.focus();
-  });
-
   const formik = useFormik({
     initialValues: {
       message: '',
@@ -59,7 +54,6 @@ const RemoveChannelModal = () => {
               placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
               value={formik.values.message}
-              ref={renameModalInputRef}
             />
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
           </div>

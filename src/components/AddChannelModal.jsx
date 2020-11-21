@@ -1,11 +1,11 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { closeModal, modalSelector } from '../slices/modalsSlice';
+import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 import SubmitChannelSchema from '../validator';
 
@@ -15,7 +15,6 @@ const AddChannelModal = () => {
   const hideModal = () => {
     dispatch(closeModal());
   };
-  const modalType = useSelector(modalSelector);
 
   const channelsUrl = routes.channelsPath();
   const formik = useFormik({
@@ -38,11 +37,6 @@ const AddChannelModal = () => {
     },
   });
 
-  const addModalInputRef = React.useRef(null);
-  React.useEffect(() => {
-    addModalInputRef.current.focus();
-  }, [modalType]);
-
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
@@ -58,7 +52,6 @@ const AddChannelModal = () => {
               placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
               value={formik.values.message}
-              ref={addModalInputRef}
             />
             {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
           </div>
