@@ -4,7 +4,6 @@ import { Edit, Trash } from 'react-feather';
 import cn from 'classnames';
 
 import { selectChannel, currentChannelIdSelector } from '../slices/channelsSlice';
-import { isRemovable } from '../utils';
 import { openModal } from '../slices/modalsSlice';
 
 const Channel = ({ channel }) => {
@@ -31,7 +30,7 @@ const Channel = ({ channel }) => {
 
   const classes = getClasses(channel.id, currentChannelId);
 
-  if (!isRemovable(channel)) {
+  if (!channel.removable) {
     return (
       <button type="button" id={channel.id} className={classes} onClick={handleSelectChannel(channel.id)}>
         {channel.name}
