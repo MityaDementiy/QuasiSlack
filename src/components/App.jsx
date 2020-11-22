@@ -35,7 +35,7 @@ const App = () => {
               <ShowAddChannelModal />
             </Col>
           </Row>
-          <Row>
+          <Row className="h-50 overflow-auto">
             <Col>
               <Channels />
             </Col>
