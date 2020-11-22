@@ -26,7 +26,7 @@ const App = () => {
   const { t } = useTranslation();
 
   return (
-    <Container fluid>
+    <Container>
       <Row className="vh-100">
         <Col sm={12} md={4} lg={3}>
           <Row>
