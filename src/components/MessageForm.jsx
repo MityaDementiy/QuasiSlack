@@ -53,7 +53,7 @@ const MessageForm = () => {
             value={formik.values.message}
             ref={messageInputRef}
           />
-          {formik.errors.message && (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>)}
+          {formik.errors.message && <div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>}
         </div>
         <div className="col-3">
           <button type="submit" className="btn btn-primary btn-block" disabled={formik.isSubmitting || !formik.dirty}>{t('interfaceTexts.submitButton')}</button>
