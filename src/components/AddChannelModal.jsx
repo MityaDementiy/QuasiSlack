@@ -53,7 +53,7 @@ const AddChannelModal = () => {
               onChange={formik.handleChange}
               value={formik.values.message}
             />
-            {formik.errors.message ? (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>) : null}
+            {formik.errors.message && (<div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>)}
           </div>
           <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}>
             {t('interfaceTexts.submitButton')}
