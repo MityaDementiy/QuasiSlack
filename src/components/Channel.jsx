@@ -11,7 +11,7 @@ const Channel = ({ channel }) => {
   const currentChannelId = useSelector(currentChannelIdSelector);
 
   const handleSelectChannel = (id) => () => {
-    dispatch(selectChannel(parseInt(id, 10)));
+    dispatch(selectChannel(id));
   };
 
   const handleShowDeleteModal = () => {
