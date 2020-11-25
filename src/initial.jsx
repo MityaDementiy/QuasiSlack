@@ -4,8 +4,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import Rollbar from 'rollbar';
-import i18next from 'i18next';
-import './i18n';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 import App from './components/App';
 import { setUserName, getUserName } from './utils';
@@ -58,13 +58,15 @@ export default ({ channels, currentChannelId, messages }) => {
     captureUnhandledRejections: true,
   });
 
-  i18next.init({
-    lng: 'en',
-    debug: true,
-    resources: {
-      en,
-    },
-  });
+  i18n
+    .use(initReactI18next)
+    .init({
+      lng: 'en',
+      debug: true,
+      resources: {
+        en,
+      },
+    });
 
   const container = document.querySelector('.container');
   ReactDom.render(
