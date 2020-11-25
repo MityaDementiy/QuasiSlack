@@ -51,9 +51,11 @@ export default ({ channels, currentChannelId, messages }) => {
     store.dispatch(renameChannel(attributes));
   });
 
+  const rollbarToken = process.env.ROLLBAR_TOKEN;
+
   // eslint-disable-next-line no-new
   new Rollbar({
-    accessToken: 'a36c303f356b4c8aa59ef1713b1fc2c1',
+    accessToken: rollbarToken,
     captureUncaught: true,
     captureUnhandledRejections: true,
   });

@@ -41,7 +41,7 @@
     "css-loader": "^3.6.0",
     "cssnano": "^4.1.10",
     "debug": "^4.1.1",
-    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^6.0.0",
     "faker": "^4.1.0",
     "fastify": "^3.0.3",
     "fastify-formbody": "^4.0.3",
