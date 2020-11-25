@@ -12,7 +12,7 @@ const ShowAddChannelModal = () => {
   };
 
   return (
-    <button type="button" className="btn btn-light btn-sm" onClick={handleClick}>{t('interfaceTexts.addChannelButton')}</button>
+    <button type="button" className="btn btn-outline-primary btn-sm" onClick={handleClick}>{t('interfaceTexts.addChannelButton')}</button>
   );
 };
 

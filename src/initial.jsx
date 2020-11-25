@@ -70,7 +70,7 @@ export default ({ channels, currentChannelId, messages }) => {
       },
     });
 
-  const container = document.querySelector('.container');
+  const container = document.getElementById('chat');
   ReactDom.render(
     <Provider store={store}>
       <UserContext.Provider value={userName}>
