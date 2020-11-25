@@ -21,11 +21,11 @@ const RemoveChannelModal = () => {
 
   const formik = useFormik({
     initialValues: {
-      message: '',
+      name: '',
     },
     validationSchema: SubmitChannelSchema,
     onSubmit: async (values, { setFieldError }) => {
-      const newChannelName = values.message;
+      const newChannelName = values.name;
       const attributes = {
         name: newChannelName,
       };
@@ -49,13 +49,13 @@ const RemoveChannelModal = () => {
           <div className="form-group form-row">
             <input
               type="text"
-              id="message"
+              id="name"
               className="form-control"
               placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
-              value={formik.values.message}
+              value={formik.values.name}
             />
-            {formik.errors.message && <div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>}
+            {formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
           </div>
           <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}>
             {t('interfaceTexts.renameButton')}
