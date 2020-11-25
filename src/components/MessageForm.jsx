@@ -6,14 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 import routes from '../routes';
 import { currentChannelIdSelector } from '../slices/channelsSlice';
-import { modalSelector } from '../slices/modalsSlice';
 import UserContext from '../Context';
 
 const MessageForm = () => {
   const userName = React.useContext(UserContext);
   const currentChannelId = useSelector(currentChannelIdSelector);
   const channelUrl = routes.channelMessagesPath(currentChannelId);
-  const modalType = useSelector(modalSelector);
   const { t } = useTranslation();
 
   const formik = useFormik({
@@ -38,7 +36,7 @@ const MessageForm = () => {
   const messageInputRef = React.useRef(null);
   React.useEffect(() => {
     messageInputRef.current.focus();
-  }, [currentChannelId, formik.values.message, modalType]);
+  }, [currentChannelId, formik.values.message]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
