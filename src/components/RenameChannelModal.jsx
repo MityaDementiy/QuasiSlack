@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import { currentChannelIdSelector } from '../slices/channelsSlice';
+import { currentChannelSelector } from '../slices/channelsSlice';
 import SubmitChannelSchema from '../validator';
 
 const RemoveChannelModal = () => {
@@ -16,12 +16,14 @@ const RemoveChannelModal = () => {
   const hideModal = () => {
     dispatch(closeModal());
   };
-  const targetChannelId = useSelector(currentChannelIdSelector);
+  const targetChannel = useSelector(currentChannelSelector);
+  const targetChannelId = targetChannel.id;
   const channelUrl = routes.channelPath(targetChannelId);
+  const targetChannelName = targetChannel.name;
 
   const formik = useFormik({
     initialValues: {
-      name: '',
+      name: targetChannelName,
     },
     validationSchema: SubmitChannelSchema,
     onSubmit: async (values, { setFieldError }) => {
