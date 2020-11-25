@@ -22,30 +22,27 @@ const Channel = ({ channel }) => {
     dispatch(openModal('renaming'));
   };
 
-  const getClasses = (id, activeChannelId) => {
-    const buttonType = activeChannelId === id ? 'primary' : 'secondary';
-    const classNames = cn('btn', 'mb-3', `btn-${buttonType}`, 'btn-lg');
-    return classNames;
-  };
-
-  const classes = getClasses(channel.id, currentChannelId);
+  const classNames = cn('btn', 'mb-3', 'btn-lg', {
+    'btn-primary': currentChannelId === channel.id,
+    'btn-secondary': currentChannelId !== channel.id,
+  });
 
   return (
     <>
       {!channel.removable && (
-        <button type="button" id={channel.id} className={classes} onClick={handleSelectChannel(channel.id)}>
+        <button type="button" id={channel.id} className={classNames} onClick={handleSelectChannel(channel.id)}>
           {channel.name}
         </button>
       )}
       {channel.removable && (
         <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channel.id)} onKeyPress={handleSelectChannel(channel.id)} id={channel.id}>
-          <button type="button" className={classes}>
+          <button type="button" className={classNames}>
             {channel.name}
           </button>
-          <button type="button" className={classes} onClick={handleShowDeleteModal}>
+          <button type="button" className={classNames} onClick={handleShowDeleteModal}>
             <Trash />
           </button>
-          <button type="button" className={classes} onClick={handleShowRenameModal}>
+          <button type="button" className={classNames} onClick={handleShowRenameModal}>
             <Edit />
           </button>
         </div>
