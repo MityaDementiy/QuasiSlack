@@ -6,7 +6,7 @@ import { currentChannelMessagesSelector } from '../slices/messagesSlice';
 const Messages = () => {
   const currentChannelMessages = useSelector(currentChannelMessagesSelector);
 
-  const renderMessages = currentChannelMessages.map((message) => (
+  const renderMessage = (message) => (
     <div key={message.id}>
       <span>
         <b>
@@ -18,12 +18,12 @@ const Messages = () => {
         {message.text}
       </span>
     </div>
-  ));
+  );
 
   return (
     <div className="card mb-4 h-50 overflow-auto">
       <div className="card-body h-50 overflow-auto">
-        {renderMessages}
+        {currentChannelMessages.map(renderMessage)}
       </div>
     </div>
   );
