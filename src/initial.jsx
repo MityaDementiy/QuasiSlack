@@ -53,12 +53,13 @@ export default ({ channels, currentChannelId, messages }) => {
 
   const rollbarToken = process.env.ROLLBAR_TOKEN;
 
-  // eslint-disable-next-line no-new
-  new Rollbar({
+  const rollbarConfig = new Rollbar({
     accessToken: rollbarToken,
     captureUncaught: true,
     captureUnhandledRejections: true,
   });
+
+  Rollbar.init(rollbarConfig);
 
   i18n
     .use(initReactI18next)
