@@ -3,22 +3,22 @@ import { useSelector } from 'react-redux';
 
 import { currentChannelMessagesSelector } from '../slices/messagesSlice';
 
+const renderMessage = (message) => (
+  <div key={message.id}>
+    <span>
+      <b>
+        {`${message.user}:`}
+      </b>
+    </span>
+    <span>
+      {' '}
+      {message.text}
+    </span>
+  </div>
+);
+
 const Messages = () => {
   const currentChannelMessages = useSelector(currentChannelMessagesSelector);
-
-  const renderMessage = (message) => (
-    <div key={message.id}>
-      <span>
-        <b>
-          {`${message.user}:`}
-        </b>
-      </span>
-      <span>
-        {' '}
-        {message.text}
-      </span>
-    </div>
-  );
 
   return (
     <div className="card mb-4 h-50 overflow-auto">
