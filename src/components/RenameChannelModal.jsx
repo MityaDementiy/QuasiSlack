@@ -36,7 +36,7 @@ const RemoveChannelModal = () => {
         formik.resetForm();
         hideModal();
       } catch (err) {
-        setFieldError('message', err.message);
+        setFieldError('name', err.message);
       }
     },
   });

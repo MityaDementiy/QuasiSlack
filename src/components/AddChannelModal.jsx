@@ -32,7 +32,7 @@ const AddChannelModal = () => {
         await axios.post(channelsUrl, { data: { attributes } });
         hideModal();
       } catch (err) {
-        setFieldError('name', err.name);
+        setFieldError('name', err.message);
       }
     },
   });
