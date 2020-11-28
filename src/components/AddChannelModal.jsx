@@ -29,7 +29,6 @@ const AddChannelModal = () => {
       };
       try {
         await axios.post(channelsUrl, { data: { attributes } });
-        formik.resetForm();
         hideModal();
       } catch (err) {
         setFieldError('message', err.message);
