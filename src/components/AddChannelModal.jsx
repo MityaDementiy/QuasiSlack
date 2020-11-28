@@ -22,6 +22,7 @@ const AddChannelModal = () => {
       name: '',
     },
     validationSchema: SubmitChannelSchema,
+    isInitialValid: false,
     onSubmit: async (values, { setFieldError }) => {
       const channelName = values.name;
       const attributes = {
@@ -54,7 +55,7 @@ const AddChannelModal = () => {
             />
             {formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
           </div>
-          <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}>
+          <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting}>
             {t('interfaceTexts.submitButton')}
           </Button>
         </form>
