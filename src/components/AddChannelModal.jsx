@@ -32,7 +32,7 @@ const AddChannelModal = () => {
         await axios.post(channelsUrl, { data: { attributes } });
         hideModal();
       } catch (err) {
-        setFieldError('message', err.message);
+        setFieldError('name', err.name);
       }
     },
   });
@@ -51,7 +51,7 @@ const AddChannelModal = () => {
               className="form-control"
               placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
-              value={formik.values.message}
+              value={formik.values.name}
             />
             {formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
           </div>
