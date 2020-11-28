@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import SubmitChannelSchema from '../validator';
+import { SubmitChannelSchema } from '../validator';
 
 const AddChannelModal = () => {
   const dispatch = useDispatch();
