@@ -9,6 +9,7 @@ import { openModal } from '../slices/modalsSlice';
 const Channel = ({ channel }) => {
   const dispatch = useDispatch();
   const currentChannelId = useSelector(currentChannelIdSelector);
+  const { id: channelId, name: channelName } = channel;
 
   const handleSelectChannel = (id) => () => {
     dispatch(selectChannel(id));
@@ -23,15 +24,15 @@ const Channel = ({ channel }) => {
   };
 
   const classNames = cn('btn', 'mb-3', 'btn-lg', {
-    'btn-primary': currentChannelId === channel.id,
-    'btn-secondary': currentChannelId !== channel.id,
+    'btn-primary': currentChannelId === channelId,
+    'btn-secondary': currentChannelId !== channelId,
   });
 
   if (channel.removable) {
     return (
-      <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channel.id)} onKeyPress={handleSelectChannel(channel.id)} id={channel.id}>
+      <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channelId)} onKeyPress={handleSelectChannel(channelId)} id={channelId}>
         <button type="button" className={classNames}>
-          {channel.name}
+          {channelName}
         </button>
         <button type="button" className={classNames} onClick={handleShowDeleteModal}>
           <Trash />
@@ -43,7 +44,7 @@ const Channel = ({ channel }) => {
     );
   }
   return (
-    <button type="button" id={channel.id} className={classNames} onClick={handleSelectChannel(channel.id)}>
+    <button type="button" id={channelId} className={classNames} onClick={handleSelectChannel(channelId)}>
       {channel.name}
     </button>
   );
