@@ -27,25 +27,25 @@ const Channel = ({ channel }) => {
     'btn-secondary': currentChannelId !== channel.id,
   });
 
-  if (!channel.removable) {
+  if (channel.removable) {
     return (
-      <button type="button" id={channel.id} className={classNames} onClick={handleSelectChannel(channel.id)}>
-        {channel.name}
-      </button>
+      <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channel.id)} onKeyPress={handleSelectChannel(channel.id)} id={channel.id}>
+        <button type="button" className={classNames}>
+          {channel.name}
+        </button>
+        <button type="button" className={classNames} onClick={handleShowDeleteModal}>
+          <Trash />
+        </button>
+        <button type="button" className={classNames} onClick={handleShowRenameModal}>
+          <Edit />
+        </button>
+      </div>
     );
   }
   return (
-    <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channel.id)} onKeyPress={handleSelectChannel(channel.id)} id={channel.id}>
-      <button type="button" className={classNames}>
-        {channel.name}
-      </button>
-      <button type="button" className={classNames} onClick={handleShowDeleteModal}>
-        <Trash />
-      </button>
-      <button type="button" className={classNames} onClick={handleShowRenameModal}>
-        <Edit />
-      </button>
-    </div>
+    <button type="button" id={channel.id} className={classNames} onClick={handleSelectChannel(channel.id)}>
+      {channel.name}
+    </button>
   );
 };
 
