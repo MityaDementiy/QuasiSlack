@@ -39,6 +39,11 @@ const RemoveChannelModal = () => {
     },
   });
 
+  const renameChannelInputRef = React.useRef(null);
+  React.useEffect(() => {
+    renameChannelInputRef.current.focus();
+  }, []);
+
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
@@ -54,6 +59,7 @@ const RemoveChannelModal = () => {
               placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
               value={formik.values.name}
+              ref={renameChannelInputRef}
             />
             {formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
           </div>

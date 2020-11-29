@@ -37,6 +37,11 @@ const AddChannelModal = () => {
     },
   });
 
+  const addChannelInputRef = React.useRef(null);
+  React.useEffect(() => {
+    addChannelInputRef.current.focus();
+  });
+
   return (
     <Modal show onHide={hideModal}>
       <Modal.Header closeButton>
@@ -52,6 +57,7 @@ const AddChannelModal = () => {
               placeholder={t('interfaceTexts.modalFormPlaceholder')}
               onChange={formik.handleChange}
               value={formik.values.name}
+              ref={addChannelInputRef}
             />
             {formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
           </div>
