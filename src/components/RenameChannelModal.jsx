@@ -32,7 +32,6 @@ const RemoveChannelModal = () => {
       };
       try {
         await axios.patch(channelUrl, { data: { attributes } });
-        formik.resetForm();
         hideModal();
       } catch (err) {
         setFieldError('name', err.message);
