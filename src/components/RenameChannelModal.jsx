@@ -42,7 +42,7 @@ const RemoveChannelModal = () => {
   const renameChannelInputRef = React.useRef(null);
   React.useEffect(() => {
     renameChannelInputRef.current.focus();
-  }, []);
+  });
 
   return (
     <Modal show onHide={hideModal}>
