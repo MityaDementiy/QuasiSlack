@@ -14,15 +14,15 @@ const RemoveChannelModal = () => {
   const hideModal = () => {
     dispatch(closeModal());
   };
-  const deleteChannelId = useSelector(currentChannelIdSelector);
-  const channelUrl = routes.channelPath(deleteChannelId);
+  const targetChannelId = useSelector(currentChannelIdSelector);
+  const channelUrl = routes.channelPath(targetChannelId);
 
   const [error, setError] = React.useState(null);
 
   const handleDelete = async () => {
     const data = {
       type: 'channels',
-      id: deleteChannelId,
+      id: targetChannelId,
     };
 
     try {
