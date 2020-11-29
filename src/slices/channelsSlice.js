@@ -29,8 +29,6 @@ const channelsSlice = createSlice({
       const { id, name } = action.payload;
       const targetChannel = state.channels.find((channel) => channel.id === id);
       targetChannel.name = name;
-      // eslint-disable-next-line no-param-reassign
-      state.currentChannelId = id;
     },
   },
 });
