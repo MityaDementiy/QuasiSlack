@@ -9,7 +9,6 @@ const channelsSlice = createSlice({
       channels: [],
       currentChannelId: defaultChannel,
     },
-    messages: [],
   },
   reducers: {
     selectChannel(state, action) {
