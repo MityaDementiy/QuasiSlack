@@ -9,7 +9,7 @@ import { openModal } from '../slices/modalsSlice';
 const Channel = ({ channel }) => {
   const dispatch = useDispatch();
   const currentChannelId = useSelector(currentChannelIdSelector);
-  const { id: channelId, name: channelName } = channel;
+  const { id: channelId, name: channelName, removable: isRemovable } = channel;
 
   const handleSelectChannel = (id) => () => {
     dispatch(selectChannel(id));
@@ -28,7 +28,7 @@ const Channel = ({ channel }) => {
     'btn-secondary': currentChannelId !== channelId,
   });
 
-  if (channel.removable) {
+  if (isRemovable) {
     return (
       <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channelId)} onKeyPress={handleSelectChannel(channelId)} id={channelId}>
         <button type="button" className={classNames}>
