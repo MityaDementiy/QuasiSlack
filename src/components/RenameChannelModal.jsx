@@ -17,9 +17,8 @@ const RemoveChannelModal = () => {
     dispatch(closeModal());
   };
   const targetChannel = useSelector(currentChannelSelector);
-  const targetChannelId = targetChannel.id;
+  const { id: targetChannelId, name: targetChannelName } = targetChannel;
   const channelUrl = routes.channelPath(targetChannelId);
-  const targetChannelName = targetChannel.name;
 
   const formik = useFormik({
     initialValues: {
