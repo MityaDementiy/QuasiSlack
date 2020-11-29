@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux';
 
 import { currentChannelMessagesSelector } from '../slices/messagesSlice';
 
-const renderMessage = (message) => (
-  <div key={message.id}>
+const renderMessage = ({ id, user, text }) => (
+  <div key={id}>
     <span>
       <b>
-        {`${message.user}:`}
+        {`${user}:`}
       </b>
     </span>
     <span>
       {' '}
-      {message.text}
+      {text}
     </span>
   </div>
 );
