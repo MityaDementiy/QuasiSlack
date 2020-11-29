@@ -4,7 +4,13 @@ const defaultChannel = 1;
 
 const channelsSlice = createSlice({
   name: 'channels',
-  initialState: {},
+  initialState: {
+    channels: {
+      channels: [],
+      currentChannelId: defaultChannel,
+    },
+    messages: [],
+  },
   reducers: {
     selectChannel(state, action) {
       const id = action.payload;
