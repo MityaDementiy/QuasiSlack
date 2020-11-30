@@ -15,12 +15,8 @@ const Channel = ({ channel }) => {
     dispatch(selectChannel(id));
   };
 
-  const handleShowDeleteModal = () => {
-    dispatch(openModal('removing'));
-  };
-
-  const handleShowRenameModal = () => {
-    dispatch(openModal('renaming'));
+  const handleShowModal = (modalType) => () => {
+    dispatch(openModal(modalType));
   };
 
   const classNames = cn('btn', 'mb-3', 'btn-lg', {
@@ -34,10 +30,10 @@ const Channel = ({ channel }) => {
         <button type="button" className={classNames}>
           {channelName}
         </button>
-        <button type="button" className={classNames} onClick={handleShowDeleteModal}>
+        <button type="button" className={classNames} onClick={handleShowModal('removing')}>
           <Trash />
         </button>
-        <button type="button" className={classNames} onClick={handleShowRenameModal}>
+        <button type="button" className={classNames} onClick={handleShowModal('renaming')}>
           <Edit />
         </button>
       </div>
