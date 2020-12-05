@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
 import { currentChannelSelector } from '../slices/channelsSlice';
-import { SubmitChannelSchema } from '../validator';
+import { submitChannelSchema } from '../validator';
 
 const RemoveChannelModal = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const RemoveChannelModal = () => {
     initialValues: {
       name: targetChannelName,
     },
-    validationSchema: SubmitChannelSchema,
+    validationSchema: submitChannelSchema,
     onSubmit: async (values, { setFieldError }) => {
       const newChannelName = values.name;
       const attributes = {

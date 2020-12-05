@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import routes from '../routes';
 import { currentChannelIdSelector } from '../slices/channelsSlice';
 import UserContext from '../Context';
-import { SubmitMessageSchema } from '../validator';
+import { submitMessageSchema } from '../validator';
 
 const MessageForm = () => {
   const userName = React.useContext(UserContext);
@@ -19,7 +19,7 @@ const MessageForm = () => {
     initialValues: {
       message: '',
     },
-    validationSchema: SubmitMessageSchema,
+    validationSchema: submitMessageSchema,
     isInitialValid: false,
     onSubmit: async (values, { setFieldError }) => {
       const messageText = values.message;

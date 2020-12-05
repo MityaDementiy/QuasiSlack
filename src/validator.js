@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const SubmitChannelSchema = Yup.object().shape({
+export const submitChannelSchema = Yup.object().shape({
   name: Yup.string()
     .trim()
     .min(3, 'Too short, minimum length is 3 symbols!')
@@ -8,7 +8,7 @@ export const SubmitChannelSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const SubmitMessageSchema = Yup.object().shape({
+export const submitMessageSchema = Yup.object().shape({
   message: Yup.string()
     .trim()
     .min(1, 'You can not submit empty form'),

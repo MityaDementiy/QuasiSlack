@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import { SubmitChannelSchema } from '../validator';
+import { submitChannelSchema } from '../validator';
 
 const AddChannelModal = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const AddChannelModal = () => {
     initialValues: {
       name: '',
     },
-    validationSchema: SubmitChannelSchema,
+    validationSchema: submitChannelSchema,
     isInitialValid: false,
     onSubmit: async (values, { setFieldError }) => {
       const channelName = values.name;
