@@ -26,7 +26,8 @@ const RemoveChannelModal = () => {
       name: targetChannelName,
     },
     validationSchema: validateChannels(channels),
-    onSubmit: async (values, { setFieldError }) => {
+    validateOnChange: false,
+    onSubmit: async (values, { setStatus }) => {
       const newChannelName = values.name;
       const attributes = {
         name: newChannelName,
@@ -35,7 +36,7 @@ const RemoveChannelModal = () => {
         await axios.patch(channelUrl, { data: { attributes } });
         hideModal();
       } catch (err) {
-        setFieldError('name', err.message);
+        setStatus(t('statusNotifications.networkError'));
       }
     },
   });
@@ -43,7 +44,7 @@ const RemoveChannelModal = () => {
   const renameChannelInputRef = React.useRef(null);
   React.useEffect(() => {
     renameChannelInputRef.current.focus();
-  });
+  }, []);
 
   return (
     <Modal show onHide={hideModal}>
@@ -62,9 +63,10 @@ const RemoveChannelModal = () => {
               value={formik.values.name}
               ref={renameChannelInputRef}
             />
-            {formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
+            {formik.touched && formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
+            {formik.status && <div className="alert alert-danger mt-3" role="alert">{formik.status}</div>}
           </div>
-          <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}>
+          <Button variant="primary" type="submit" disabled={formik.isSubmitting || !formik.dirty}>
             {t('interfaceTexts.renameButton')}
           </Button>
         </form>

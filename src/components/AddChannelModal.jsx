@@ -23,8 +23,8 @@ const AddChannelModal = () => {
       name: '',
     },
     validationSchema: validateChannels(channels),
-    isInitialValid: false,
-    onSubmit: async (values, { setFieldError }) => {
+    validateOnChange: false,
+    onSubmit: async (values, { setStatus }) => {
       const channelName = values.name;
       const attributes = {
         name: channelName,
@@ -33,7 +33,7 @@ const AddChannelModal = () => {
         await axios.post(channelsUrl, { data: { attributes } });
         hideModal();
       } catch (err) {
-        setFieldError('name', err.message);
+        setStatus(t('statusNotifications.networkError'));
       }
     },
   });
@@ -41,7 +41,7 @@ const AddChannelModal = () => {
   const addChannelInputRef = React.useRef(null);
   React.useEffect(() => {
     addChannelInputRef.current.focus();
-  });
+  }, []);
 
   return (
     <Modal show onHide={hideModal}>
@@ -60,9 +60,10 @@ const AddChannelModal = () => {
               value={formik.values.name}
               ref={addChannelInputRef}
             />
-            {formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
+            {formik.touched && formik.errors.name && <div className="alert alert-danger mt-3" role="alert">{formik.errors.name}</div>}
+            {formik.status && <div className="alert alert-danger mt-3" role="alert">{formik.status}</div>}
           </div>
-          <Button variant="primary" type="submit" disabled={!formik.isValid || formik.isSubmitting}>
+          <Button variant="primary" type="submit" disabled={formik.isSubmitting || !formik.dirty}>
             {t('interfaceTexts.submitButton')}
           </Button>
         </form>

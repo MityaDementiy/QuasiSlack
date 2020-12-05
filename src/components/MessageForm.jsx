@@ -20,8 +20,8 @@ const MessageForm = () => {
       message: '',
     },
     validationSchema: submitMessageSchema,
-    isInitialValid: false,
-    onSubmit: async (values, { setFieldError }) => {
+    validateOnChange: false,
+    onSubmit: async (values, { setStatus }) => {
       const messageText = values.message;
       const attributes = {
         user: userName,
@@ -31,7 +31,7 @@ const MessageForm = () => {
         await axios.post(channelUrl, { data: { attributes } });
         formik.resetForm();
       } catch (err) {
-        setFieldError('message', err.message);
+        setStatus(t('statusNotifications.networkError'));
       }
     },
   });
@@ -53,11 +53,13 @@ const MessageForm = () => {
             onChange={formik.handleChange}
             value={formik.values.message}
             ref={messageInputRef}
+            onBlur={formik.handleBlur}
           />
-          {formik.errors.message && <div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>}
+          {formik.touched && formik.errors.message && <div className="alert alert-danger mt-3" role="alert">{formik.errors.message}</div>}
+          {formik.status && <div className="alert alert-danger mt-3" role="alert">{formik.status}</div>}
         </div>
         <div className="col-3">
-          <button type="submit" className="btn btn-primary btn-block" disabled={!formik.isValid || formik.isSubmitting}>{t('interfaceTexts.submitButton')}</button>
+          <button type="submit" className="btn btn-primary btn-block" disabled={formik.isSubmitting || !formik.dirty}>{t('interfaceTexts.submitButton')}</button>
         </div>
       </div>
     </form>
