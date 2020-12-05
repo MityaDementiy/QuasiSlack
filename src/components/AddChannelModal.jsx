@@ -1,13 +1,14 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
 import { closeModal } from '../slices/modalsSlice';
 import routes from '../routes';
-import { submitChannelSchema } from '../validator';
+import { validateChannels } from '../validator';
+import { channelsSelector } from '../slices/channelsSlice';
 
 const AddChannelModal = () => {
   const dispatch = useDispatch();
@@ -15,13 +16,13 @@ const AddChannelModal = () => {
   const hideModal = () => {
     dispatch(closeModal());
   };
-
+  const channels = useSelector(channelsSelector);
   const channelsUrl = routes.channelsPath();
   const formik = useFormik({
     initialValues: {
       name: '',
     },
-    validationSchema: submitChannelSchema,
+    validationSchema: validateChannels(channels),
     isInitialValid: false,
     onSubmit: async (values, { setFieldError }) => {
       const channelName = values.name;
