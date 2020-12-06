@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
@@ -26,7 +27,7 @@ const Channel = ({ channel }) => {
 
   if (isRemovable) {
     return (
-      <div role="button" type="button" tabIndex={0} className="btn-group" onClick={handleSelectChannel(channelId)} onKeyPress={handleSelectChannel(channelId)} id={channelId}>
+      <div role="button" className="btn-group" onClick={handleSelectChannel(channelId)} onKeyPress={handleSelectChannel(channelId)} id={channelId}>
         <button type="button" className={classNames}>
           {channelName}
         </button>

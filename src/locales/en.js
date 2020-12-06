@@ -14,5 +14,8 @@ export default {
       renameModalHeader: 'Rename channel',
       renameButton: 'Rename',
     },
+    statusNotifications: {
+      networkError: 'Network error, try later!',
+    },
   },
 };

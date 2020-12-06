@@ -1,15 +1,20 @@
 import * as Yup from 'yup';
 
-export const SubmitChannelSchema = Yup.object().shape({
-  name: Yup.string()
-    .trim()
-    .min(3, 'Too short, minimum length is 3 symbols!')
-    .max(10, 'Too long, maximum length is 10 symbols!')
-    .required('Required'),
-});
+export const validateChannels = (channels) => {
+  const channelsNames = channels.map((channel) => channel.name);
 
-export const SubmitMessageSchema = Yup.object().shape({
+  return Yup.object().shape({
+    name: Yup.string()
+      .trim()
+      .min(3)
+      .max(10)
+      .notOneOf(channelsNames)
+      .required(),
+  });
+};
+
+export const submitMessageSchema = Yup.object().shape({
   message: Yup.string()
     .trim()
-    .min(1, 'You can not submit empty form'),
+    .min(1),
 });

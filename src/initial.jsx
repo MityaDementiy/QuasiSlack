@@ -9,7 +9,7 @@ import { initReactI18next } from 'react-i18next';
 
 import App from './components/App';
 import { setUserName, getUserName } from './utils';
-import rootReducer from './reducers';
+import rootReducer from './slices/index';
 import { addMessage } from './slices/messagesSlice';
 import {
   addChannel,
