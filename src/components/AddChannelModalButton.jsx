@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { openModal } from '../slices/modalsSlice';
 
-const ShowAddChannelModal = () => {
+const AddChannelModalButton = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const handleClick = () => {
@@ -16,4 +16,4 @@ const ShowAddChannelModal = () => {
   );
 };
 
-export default ShowAddChannelModal;
+export default AddChannelModalButton;

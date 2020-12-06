@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import ShowAddChannelModal from './ShowAddChannelModal';
+import AddChannelModalButton from './AddChannelModalButton';
 import AddChannelModal from './AddChannelModal';
 import RemoveChannelModal from './RemoveChannelModal';
 import RenameChannelModal from './RenameChannelModal';
@@ -32,7 +32,7 @@ const App = () => {
           <Row>
             <Col className="mb-3 d-flex justify-content-between">
               <h5>{t('interfaceTexts.channelsListHeader')}</h5>
-              <ShowAddChannelModal />
+              <AddChannelModalButton />
             </Col>
           </Row>
           <Row className="h-50 overflow-auto">
