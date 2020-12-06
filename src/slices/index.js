@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import messagesReducer from '../slices/messagesSlice';
-import channelsReducer from '../slices/channelsSlice';
-import modalReducer from '../slices/modalsSlice';
+import messagesReducer from './messagesSlice';
+import channelsReducer from './channelsSlice';
+import modalReducer from './modalsSlice';
 
 export default combineReducers({
   messages: messagesReducer,
