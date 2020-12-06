@@ -41,7 +41,7 @@ const App = () => {
             </Col>
           </Row>
         </Col>
-        <Col sm={12} md={8} lg={9}>
+        <Col sm={12} md={8} lg={9} className="h-100">
           {modal && <ModalComponent />}
           <Messages />
           <MessageForm />
